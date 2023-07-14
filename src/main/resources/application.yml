@@ -1,0 +1,12 @@
+server:
+    port: 9999
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://@192.168.43.114:3306/gkvr_system
+
+logging:
+  level:
+    com.scu: debug
