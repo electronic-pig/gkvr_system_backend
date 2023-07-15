@@ -39,7 +39,7 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 
         schools = this.baseMapper.selectList(wrapper);
 
-
+        //------------------------------------------------------------------以下代码不会被执行，预留用
         // 如果用户存在，返回用户信息，生成token,并将token和用户信息存入redis
         if (schools != null) {
             // 暂时用UUID，终极方案是JWT
@@ -50,6 +50,8 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
             return data;
         }
         return null;
+        //-----------------------------------------------------------------------------------------
+
     }
 
     @Override
@@ -63,11 +65,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         result.put("totalpage", (schools.size()/10)+1);
         result.put("schools", subList);
 
-
         return result;  // 返回指定页数的学校列表
-
-
-
-
     }
 }
