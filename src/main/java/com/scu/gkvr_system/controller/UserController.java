@@ -31,4 +31,13 @@ public class UserController {
         }
         return Result.fail(20001, "用户名或密码错误");
     }
+
+    @PostMapping("/register")
+    public Result register(@RequestBody User user) {
+        Boolean result = userService.register(user);
+        if (!result) {
+            return Result.fail("用户已存在");
+        }
+        return Result.success("注册成功");
+    }
 }

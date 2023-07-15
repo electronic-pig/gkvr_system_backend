@@ -33,7 +33,7 @@ public class Result<T> {
     }
 
     public static <T> Result<T> fail(Integer code) {
-        return new Result<>(20001, "fail", null);
+        return new Result<>(code, "fail", null);
     }
 
     public static <T> Result<T> fail(String message) {
@@ -41,7 +41,7 @@ public class Result<T> {
     }
 
     public static <T> Result<T> fail(Integer code, String message) {
-        return new Result<>(20001, message, null);
+        return new Result<>(code, message, null);
     }
 
 }

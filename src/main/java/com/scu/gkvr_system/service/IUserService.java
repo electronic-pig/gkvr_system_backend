@@ -15,4 +15,6 @@ import java.util.Map;
  */
 public interface IUserService extends IService<User> {
     Map<String, Object> login(User user);
+
+    Boolean register(User user);
 }
