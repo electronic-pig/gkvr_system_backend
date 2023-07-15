@@ -62,7 +62,7 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         List<SchoolInfo> subList = schools.subList(startIndex, endIndex);
         Map<String, Object> result = new HashMap<>();
         result.put("page", page);
-        result.put("totalpage", (schools.size()/10)+1);
+        result.put("total", schools.size());
         result.put("schools", subList);
 
         return result;  // 返回指定页数的学校列表
