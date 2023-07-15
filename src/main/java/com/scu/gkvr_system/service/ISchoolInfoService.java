@@ -2,15 +2,21 @@ package com.scu.gkvr_system.service;
 
 import com.scu.gkvr_system.entity.SchoolInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.scu.gkvr_system.entity.User;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
  *  服务类
  * </p>
  *
- * @author liyang
- * @since 2023-07-14
+ * @author weijia
+ * @since 2023-07-15
  */
 public interface ISchoolInfoService extends IService<SchoolInfo> {
+    Map<String, Object> getAllSchool();
 
+    Map<String, Object> getSchoolsByPage(int page);
 }
