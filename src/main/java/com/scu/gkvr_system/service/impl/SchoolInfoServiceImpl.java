@@ -82,4 +82,19 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         System.out.println(list985);
         return result;
     }
+
+    @Override
+    public Map<String, Object> get211Schools() {
+        List<SchoolInfo> list211 = new ArrayList<>();
+        for (int i = 0;i<schools.size();i++){
+            SchoolInfo school = schools.get(i);
+            if (school.getIs211().equals("211")){
+                list211.add(school);
+            }
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("schools", list211);
+        System.out.println(list211);
+        return result;
+    }
 }

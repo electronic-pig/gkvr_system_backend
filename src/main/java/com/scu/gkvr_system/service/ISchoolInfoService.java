@@ -22,5 +22,7 @@ public interface ISchoolInfoService extends IService<SchoolInfo> {
 
     Map<String, Object> get985Schools();
 
+    Map<String, Object> get211Schools();
+
 
 }
