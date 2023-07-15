@@ -19,4 +19,8 @@ public interface ISchoolInfoService extends IService<SchoolInfo> {
     Map<String, Object> getAllSchool();
 
     Map<String, Object> getSchoolsByPage(int page);
+
+    Map<String, Object> get985Schools();
+
+
 }

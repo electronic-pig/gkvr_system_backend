@@ -67,4 +67,19 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 
         return result;  // 返回指定页数的学校列表
     }
+
+    @Override
+    public Map<String, Object> get985Schools() {
+        List<SchoolInfo> list985 = new ArrayList<>();
+        for (int i = 0;i<schools.size();i++){
+            SchoolInfo school = schools.get(i);
+            if (school.getIs985().equals("985")){
+                list985.add(school);
+            }
+        }
+        Map<String, Object> result = new HashMap<>();
+        result.put("schools", list985);
+        System.out.println(list985);
+        return result;
+    }
 }
