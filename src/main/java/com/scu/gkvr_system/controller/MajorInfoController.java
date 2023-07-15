@@ -1,5 +1,6 @@
 package com.scu.gkvr_system.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Controller;
  * @since 2023-07-14
  */
 @Controller
-@RequestMapping("/gkvr_system/majorInfo")
+@RequestMapping("/majorInfo")
+@CrossOrigin
 public class MajorInfoController {
 
 }
