@@ -1,18 +1,42 @@
 package com.scu.gkvr_system.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.scu.common.vo.Result;
+import com.scu.gkvr_system.entity.MajorInfo;
+import com.scu.gkvr_system.entity.SchoolInfo;
+import com.scu.gkvr_system.entity.User;
+import com.scu.gkvr_system.service.IMajorInfoService;
+import com.scu.gkvr_system.service.ISchoolInfoService;
+import com.scu.gkvr_system.service.IUserService;
+import com.scu.gkvr_system.service.impl.MajorInfoServiceImpl;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
  *  前端控制器
  * </p>
  *
- * @author liyang
- * @since 2023-07-14
+ * @author weijia
+ * @since 2023-07-15
  */
-@Controller
-@RequestMapping("/gkvr_system/majorInfo")
+@RestController
+@RequestMapping("/majorInfo")
+@CrossOrigin
 public class MajorInfoController {
+    @Resource
+    private IMajorInfoService majorInfoService;
 
+    @GetMapping
+    public Result<Map<String, Object>> getSchoolsByPage(@RequestParam("page") int page) {
+        majorInfoService.getAllMaior();//获取全部学校信息
+        Map<String, Object> data = majorInfoService.getMajorsByPage(page);
+        if (data != null) {
+            return Result.success("专业信息查询成功", data);
+        }
+        return Result.fail(20001, "数据为空");
+    }
 }
