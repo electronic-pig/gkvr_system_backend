@@ -71,20 +71,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
     }
 
 
-//    @Override
-//    public Map<String, Object> get985Schools() {
-//        List<SchoolInfo> list985 = new ArrayList<>();
-//        for (int i = 0;i<schools.size();i++){
-//            SchoolInfo school = schools.get(i);
-//            if (school.getIs985().equals("985")){
-//                list985.add(school);
-//            }
-//        }
-//        Map<String, Object> result = new HashMap<>();
-//        result.put("schools", list985);
-//        System.out.println(list985);
-//        return result;
-//    }
     @Override
     public Map<String, Object> get985Schools() {
         LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
@@ -97,16 +83,11 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 
     @Override
     public Map<String, Object> get211Schools() {
-        List<SchoolInfo> list211 = new ArrayList<>();
-        for (int i = 0;i<schools.size();i++){
-            SchoolInfo school = schools.get(i);
-            if (school.getIs211().equals("211")){
-                list211.add(school);
-            }
-        }
+        LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SchoolInfo::getIs211,"211");
+        List<SchoolInfo> list = this.baseMapper.selectList(wrapper);
         Map<String, Object> result = new HashMap<>();
-        result.put("schools", list211);
-        System.out.println(list211);
+        result.put("schools", list);
         return result;
     }
 }
