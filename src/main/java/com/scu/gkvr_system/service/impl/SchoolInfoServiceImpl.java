@@ -136,7 +136,9 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 //            String key = "scliscore:" + UUID.randomUUID();
             //返回数据
             HashMap<String, Object> data = new HashMap<>();
-            data.put("sc_li_score", list);
+            data.put("tatal", list.size());
+            data.put("schoolInfo", list);
+
             return data;
         }
         return null;
