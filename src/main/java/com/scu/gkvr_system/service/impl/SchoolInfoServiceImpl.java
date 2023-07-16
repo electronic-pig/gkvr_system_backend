@@ -21,7 +21,7 @@ import java.util.*;
 @Service
 public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolInfo> implements ISchoolInfoService {
     private List<SchoolInfo> schools;  // 学校列表，假设已经包含了所有学校信息
-    private SchoolInfoMapper schoolInfoMapper;
+
 
     @Override
     public Map<String, Object> getAllSchool() {
