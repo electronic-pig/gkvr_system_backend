@@ -29,9 +29,6 @@ public class SchoolInfoController {
     @Resource
     private ISchoolInfoService schoolInfoService;
 
-    @Autowired
-    private SchoolInfoMapper schoolInfoMapper;
-
     @GetMapping
     public Result<Map<String, Object>> getSchoolsByPage(@RequestParam("page") int page) {
         schoolInfoService.getAllSchool();//获取全部学校信息
@@ -41,16 +38,6 @@ public class SchoolInfoController {
         }
         return Result.fail(20001, "数据为空");
     }
-
-//    @GetMapping("/985")
-//    public Result<Map<String, Object>> get985Schools() {
-//        schoolInfoService.getAllSchool();//获取全部学校信息
-//        Map<String, Object> data = schoolInfoService.get985Schools();
-//        if (data != null) {
-//            return Result.success("985类学校信息查询成功", data);
-//        }
-//        return Result.fail(20001, "数据为空");
-//    }
 
     @GetMapping("/985")
     public Result<Map<String, Object>> get985Schools() {
