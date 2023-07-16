@@ -27,11 +27,10 @@ public class ScLiScoreController {
     @Resource
     private IScLiScoreService scLiScoreService;
 
-    @PostMapping("/school")
-    public Result<Map<String, Object>> scoreSearchByName(@RequestBody String schoolName) {
-        scLiScoreService.getAllScLiScore();
+    @GetMapping("/school")
+    public Result<Map<String, Object>> scoreSearchByName(@RequestParam String schoolName) {
+//        scLiScoreService.getAllScLiScore();
         Map<String, Object> data = scLiScoreService.scoreSearchByName(schoolName);
-        System.out.println(data);
         if (data != null) {
             return Result.success("查询成功", data);
         }

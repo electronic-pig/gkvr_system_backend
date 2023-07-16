@@ -53,6 +53,16 @@ public class SchoolInfoController {
         return Result.fail(20001, "数据为空");
     }
 
+    @GetMapping("/searchByName")
+    public Result<Map<String, Object>> scoreSearchByName(@RequestParam String schoolName) {
+//        scLiScoreService.getAllScLiScore();
+        Map<String, Object> data = schoolInfoService.scoreSearchByName(schoolName);
+        if (data != null) {
+            return Result.success("查询成功", data);
+        }
+        return Result.fail(20001, "查询失败");
+    }
+
     @GetMapping("/985")
     public Result<Map<String, Object>> get985Schools() {
         Map<String, Object> data = schoolInfoService.get985Schools();
