@@ -124,7 +124,7 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 //    }
 
     @Override
-    public Map<String, Object> scoreSearchByName(String schoolName) {
+    public Map<String, Object> SearchByName(String schoolName) {
 //        根据学校名称查询学校分数信息
         LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(SchoolInfo::getSchoolName, schoolName);
