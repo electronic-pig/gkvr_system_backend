@@ -2,6 +2,7 @@ package com.scu.gkvr_system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.scu.gkvr_system.entity.ScLiScore;
 import com.scu.gkvr_system.entity.SchoolInfo;
 import com.scu.gkvr_system.mapper.SchoolInfoMapper;
 import com.scu.gkvr_system.service.ISchoolInfoService;
@@ -121,6 +122,25 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 //        System.out.println(list985);
 //        return result;
 //    }
+
+    @Override
+    public Map<String, Object> scoreSearchByName(String schoolName) {
+//        根据学校名称查询学校分数信息
+        LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.like(SchoolInfo::getSchoolName, schoolName);
+        System.out.println(schoolName);
+        List<SchoolInfo> list = this.baseMapper.selectList(wrapper);
+
+        if (list != null) {
+            // 暂时用UUID，终极方案是JWT
+//            String key = "scliscore:" + UUID.randomUUID();
+            //返回数据
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("sc_li_score", list);
+            return data;
+        }
+        return null;
+    }
     @Override
     public Map<String, Object> get985Schools() {
         LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();

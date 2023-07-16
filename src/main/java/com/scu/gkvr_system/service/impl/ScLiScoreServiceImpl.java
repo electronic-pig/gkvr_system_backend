@@ -56,8 +56,9 @@ public class ScLiScoreServiceImpl extends ServiceImpl<ScLiScoreMapper, ScLiScore
     public Map<String, Object> scoreSearchByName(String schoolName) {
 //        根据学校名称查询学校分数信息
         LambdaQueryWrapper<ScLiScore> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(ScLiScore::getSchoolName, schoolName);
-        ScLiScore searchScore = this.baseMapper.selectOne(wrapper);
+        wrapper.like(ScLiScore::getSchoolName, schoolName);
+        System.out.println(schoolName);
+        List<ScLiScore> searchScore = this.baseMapper.selectList(wrapper);
 
         if (searchScore != null) {
             // 暂时用UUID，终极方案是JWT
