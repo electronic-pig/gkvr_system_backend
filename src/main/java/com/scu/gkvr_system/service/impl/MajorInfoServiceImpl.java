@@ -23,7 +23,7 @@ public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo
     private List<MajorInfo> majors;  // 专业列表，假设已经包含了所有专业信息
 
     @Override
-    public Map<String, Object> getAllMaior() {
+    public Map<String, Object> getAllMajor() {
         majors = new ArrayList<>();  // 初始化专业列表
 
         // 创建 LambdaQueryWrapper 对象

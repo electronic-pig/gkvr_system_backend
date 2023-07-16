@@ -14,7 +14,7 @@ import java.util.Map;
  * @since 2023-07-14
  */
 public interface IMajorInfoService extends IService<MajorInfo> {
-    Map<String, Object> getAllMaior();
+    Map<String, Object> getAllMajor();
 
     Map<String, Object> getMajorsByPage(int page);
 }
