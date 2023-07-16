@@ -16,8 +16,8 @@ public class SchoolDetailController {
     @Resource
     private ISchoolDetailService schoolDetailService;
 
-    @PostMapping
-    public Result<Map<String, Object>> getSchoolDetail(@RequestBody String schoolId) {
+    @GetMapping
+    public Result<Map<String, Object>> getSchoolDetail(@RequestParam String schoolId) {
         Map<String, Object> data = schoolDetailService.getSchoolDetail(schoolId);
         if (data != null) {
             return Result.success("查询成功", data);
