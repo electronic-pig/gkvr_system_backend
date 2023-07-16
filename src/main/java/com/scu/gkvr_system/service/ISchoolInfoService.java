@@ -20,6 +20,9 @@ public interface ISchoolInfoService extends IService<SchoolInfo> {
 
     Map<String, Object> getSchoolsByPage(int page);
 
+    Map<String, Object> searchSchools(int page, String province, String schoolTypeMark, String ownerMark,
+                                      String is985, String is211, String doublehighMark);
+
     Map<String, Object> get985Schools();
 
     Map<String, Object> get211Schools();
