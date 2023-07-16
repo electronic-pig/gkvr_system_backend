@@ -53,7 +53,7 @@ public class SchoolInfoController {
         return Result.fail(20001, "数据为空");
     }
 
-    @GetMapping("/searchByName")
+    @GetMapping("/searchByName")//样例：http://localhost:9999/schoolInfo/searchByName?schoolName=交通大学
     public Result<Map<String, Object>> scoreSearchByName(@RequestParam String schoolName) {
 //        scLiScoreService.getAllScLiScore();
         Map<String, Object> data = schoolInfoService.scoreSearchByName(schoolName);
