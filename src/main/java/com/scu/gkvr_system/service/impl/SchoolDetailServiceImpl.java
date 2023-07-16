@@ -42,7 +42,6 @@ public class SchoolDetailServiceImpl extends ServiceImpl<SchoolDetailMapper, Sch
                     return new SchoolDetail(schoolInfo, scLiScore);
                 })
                 .collect(Collectors.toList());
-        System.out.println(list);
 
         if (list != null) {
             // 暂时用UUID，终极方案是JWT
