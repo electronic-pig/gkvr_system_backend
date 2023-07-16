@@ -5,6 +5,7 @@ import com.scu.gkvr_system.entity.SchoolInfo;
 import com.scu.gkvr_system.mapper.SchoolInfoMapper;
 import com.scu.gkvr_system.service.ISchoolInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -20,6 +21,7 @@ import java.util.*;
 @Service
 public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolInfo> implements ISchoolInfoService {
     private List<SchoolInfo> schools;  // 学校列表，假设已经包含了所有学校信息
+    private SchoolInfoMapper schoolInfoMapper;
 
     @Override
     public Map<String, Object> getAllSchool() {
@@ -68,18 +70,28 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         return result;  // 返回指定页数的学校列表
     }
 
+
+//    @Override
+//    public Map<String, Object> get985Schools() {
+//        List<SchoolInfo> list985 = new ArrayList<>();
+//        for (int i = 0;i<schools.size();i++){
+//            SchoolInfo school = schools.get(i);
+//            if (school.getIs985().equals("985")){
+//                list985.add(school);
+//            }
+//        }
+//        Map<String, Object> result = new HashMap<>();
+//        result.put("schools", list985);
+//        System.out.println(list985);
+//        return result;
+//    }
     @Override
     public Map<String, Object> get985Schools() {
-        List<SchoolInfo> list985 = new ArrayList<>();
-        for (int i = 0;i<schools.size();i++){
-            SchoolInfo school = schools.get(i);
-            if (school.getIs985().equals("985")){
-                list985.add(school);
-            }
-        }
+        LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SchoolInfo::getIs985,"985");
+        List<SchoolInfo> list = this.baseMapper.selectList(wrapper);
         Map<String, Object> result = new HashMap<>();
-        result.put("schools", list985);
-        System.out.println(list985);
+        result.put("schools", list);
         return result;
     }
 
