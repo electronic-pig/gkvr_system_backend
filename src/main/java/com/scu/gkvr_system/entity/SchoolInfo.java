@@ -58,7 +58,7 @@ public class SchoolInfo implements Serializable {
 
     private String schoolLevel;
 
-    private String schoolLevelMark;
+    private String schoolTypeMark;
 
     private String schoolType;
 
@@ -213,12 +213,12 @@ public class SchoolInfo implements Serializable {
     public void setSchoolLevel(String schoolLevel) {
         this.schoolLevel = schoolLevel;
     }
-    public String getSchoolLevelMark() {
-        return schoolLevelMark;
+    public String getschoolTypeMark() {
+        return schoolTypeMark;
     }
 
-    public void setSchoolLevelMark(String schoolLevelMark) {
-        this.schoolLevelMark = schoolLevelMark;
+    public void setschoolTypeMark(String schoolTypeMark) {
+        this.schoolTypeMark = schoolTypeMark;
     }
     public String getSchoolType() {
         return schoolType;
@@ -266,7 +266,7 @@ public class SchoolInfo implements Serializable {
             ", provinceName=" + provinceName +
             ", schoolId=" + schoolId +
             ", schoolLevel=" + schoolLevel +
-            ", schoolLevelMark=" + schoolLevelMark +
+            ", schoolTypeMark=" + schoolTypeMark +
             ", schoolType=" + schoolType +
             ", monthView=" + monthView +
             ", totalView=" + totalView +
