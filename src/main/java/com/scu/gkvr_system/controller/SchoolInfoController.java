@@ -53,19 +53,8 @@ public class SchoolInfoController {
         return Result.fail(20001, "数据为空");
     }
 
-//    @GetMapping("/985")
-//    public Result<Map<String, Object>> get985Schools() {
-//        schoolInfoService.getAllSchool();//获取全部学校信息
-//        Map<String, Object> data = schoolInfoService.get985Schools();
-//        if (data != null) {
-//            return Result.success("985类学校信息查询成功", data);
-//        }
-//        return Result.fail(20001, "数据为空");
-//    }
-
     @GetMapping("/985")
     public Result<Map<String, Object>> get985Schools() {
-//        schoolInfoService.getAllSchool();//获取全部学校信息
         Map<String, Object> data = schoolInfoService.get985Schools();
         if (data != null) {
             return Result.success("985类学校信息查询成功", data);
@@ -75,7 +64,6 @@ public class SchoolInfoController {
 
     @GetMapping("/211")
     public Result<Map<String, Object>> get211Schools() {
-        schoolInfoService.getAllSchool();//获取全部学校信息
         Map<String, Object> data = schoolInfoService.get211Schools();
         if (data != null) {
             return Result.success("211类学校信息查询成功", data);
