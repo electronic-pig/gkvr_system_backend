@@ -5,17 +5,17 @@ import java.util.List;
 public class SchoolDetail {
     private SchoolInfo schoolInfo;
     private List<MajorScore> majorScoreList;
-    private ScLiScore scLiScore;
+    private ScLiScoreNew scLiScoreNew;
 
     public SchoolDetail(SchoolInfo schoolInfo, List<MajorScore> majorScore) {
         this.schoolInfo = schoolInfo;
         this.majorScoreList = majorScore;
     }
 
-    public SchoolDetail(SchoolInfo schoolInfo, List<MajorScore> majorScoreList, ScLiScore scLiScore) {
+    public SchoolDetail(SchoolInfo schoolInfo, List<MajorScore> majorScoreList, ScLiScoreNew scLiScoreNew) {
         this.schoolInfo = schoolInfo;
         this.majorScoreList = majorScoreList;
-        this.scLiScore = scLiScore;
+        this.scLiScoreNew = scLiScoreNew;
     }
 
     public SchoolInfo getSchoolInfo() {
@@ -34,12 +34,12 @@ public class SchoolDetail {
         this.majorScoreList = majorScoreList;
     }
 
-    public ScLiScore getScLiScore() {
-        return scLiScore;
+    public ScLiScoreNew getScLiScoreNew() {
+        return scLiScoreNew;
     }
 
-    public void setScLiScore(ScLiScore scLiScore) {
-        this.scLiScore = scLiScore;
+    public void setScLiScore(ScLiScoreNew scLiScoreNew) {
+        this.scLiScoreNew = scLiScoreNew;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class SchoolDetail {
         return "SchoolDetail{" +
                 "schoolInfo=" + schoolInfo +
                 ", majorScoreList=" + majorScoreList +
-                ", scLiScore=" + scLiScore +
+                ", scLiScoreNew=" + scLiScoreNew +
                 '}';
     }
 }

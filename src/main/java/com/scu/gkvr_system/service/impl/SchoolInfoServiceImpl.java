@@ -2,7 +2,6 @@ package com.scu.gkvr_system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.scu.gkvr_system.entity.ScLiScore;
 import com.scu.gkvr_system.entity.SchoolInfo;
 import com.scu.gkvr_system.mapper.SchoolInfoMapper;
 import com.scu.gkvr_system.service.ISchoolInfoService;

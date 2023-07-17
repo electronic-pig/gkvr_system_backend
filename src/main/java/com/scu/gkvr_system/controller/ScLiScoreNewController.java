@@ -1,8 +1,11 @@
 package com.scu.gkvr_system.controller;
 
 import com.scu.common.vo.Result;
-import com.scu.gkvr_system.service.IScLiScoreService;
-import org.springframework.web.bind.annotation.*;
+import com.scu.gkvr_system.service.IScLiScoreNewService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -13,25 +16,20 @@ import java.util.Map;
  * </p>
  *
  * @author zzc
- * @since 2023-07-15
+ * @since 2023-07-17
  */
 @RestController
 @RequestMapping("/scLiScore")
-@CrossOrigin
-public class ScLiScoreController {
-
+public class ScLiScoreNewController {
     @Resource
-    private IScLiScoreService scLiScoreService;
+    private IScLiScoreNewService scLiScoreNewService;
 
     @GetMapping("/school")
     public Result<Map<String, Object>> scoreSearchByName(@RequestParam String schoolName) {
-//        scLiScoreService.getAllScLiScore();
-        Map<String, Object> data = scLiScoreService.scoreSearchByName(schoolName);
+        Map<String, Object> data = scLiScoreNewService.scoreSearchByName(schoolName);
         if (data != null) {
             return Result.success("查询成功", data);
         }
         return Result.fail(20001, "查询失败");
     }
-
-
 }
