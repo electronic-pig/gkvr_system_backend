@@ -27,18 +27,34 @@ public class SchoolDetailServiceImpl extends ServiceImpl<SchoolDetailMapper, Sch
     private SchoolInfoMapper schoolInfoMapper;
 
     @Autowired
+    private ScLiScoreMapper scLiScoreMapper;
+
+    @Autowired
     private MajorScoreMapper majorScoreMapper;
 
     @Override
     public Map<String, Object> getSchoolDetail(String schoolId) {
-        List<SchoolDetail> list = schoolInfoMapper.selectList(new LambdaQueryWrapper<SchoolInfo>()
-                        .eq(SchoolInfo::getSchoolId, schoolId))
+//        List<SchoolDetail> list = schoolInfoMapper.selectList(new LambdaQueryWrapper<SchoolInfo>()
+//                        .eq(SchoolInfo::getSchoolId, schoolId))
+//                .stream()
+//                .map(schoolInfo -> {
+//                    List<MajorScore> majorScoreList = majorScoreMapper.selectList(new LambdaQueryWrapper<MajorScore>()
+//                            .eq(MajorScore::getSchoolId, schoolId));
+//
+//                    return new SchoolDetail(schoolInfo, majorScoreList);
+//                })
+//                .collect(Collectors.toList());
+        List<SchoolDetail> list = schoolInfoMapper.selectList(new QueryWrapper<SchoolInfo>()
+                        .eq("school_id", schoolId))
                 .stream()
                 .map(schoolInfo -> {
-                    List<MajorScore> majorScoreList = majorScoreMapper.selectList(new LambdaQueryWrapper<MajorScore>()
-                            .eq(MajorScore::getSchoolId, schoolId));
+                    ScLiScore scLiScore = scLiScoreMapper.selectOne(new QueryWrapper<ScLiScore>()
+                            .eq("school_id", schoolId));
 
-                    return new SchoolDetail(schoolInfo, majorScoreList);
+                    List<MajorScore> majorScoreList = majorScoreMapper.selectList(new QueryWrapper<MajorScore>()
+                            .eq("school_id", schoolId));
+
+                    return new SchoolDetail(schoolInfo, majorScoreList, scLiScore);
                 })
                 .collect(Collectors.toList());
 
