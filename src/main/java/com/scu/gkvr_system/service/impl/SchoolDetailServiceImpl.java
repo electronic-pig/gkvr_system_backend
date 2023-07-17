@@ -35,16 +35,14 @@ public class SchoolDetailServiceImpl extends ServiceImpl<SchoolDetailMapper, Sch
                         .eq(SchoolInfo::getSchoolId, schoolId))
                 .stream()
                 .map(schoolInfo -> {
-                    MajorScore majorScore = majorScoreMapper.selectOne(new LambdaQueryWrapper<MajorScore>()
+                    List<MajorScore> majorScoreList = majorScoreMapper.selectList(new LambdaQueryWrapper<MajorScore>()
                             .eq(MajorScore::getSchoolId, schoolId));
 
-                    return new SchoolDetail(schoolInfo, majorScore);
+                    return new SchoolDetail(schoolInfo, majorScoreList);
                 })
                 .collect(Collectors.toList());
 
         if (list != null) {
-            // 暂时用UUID，终极方案是JWT
-//            String key = "scliscore:" + UUID.randomUUID();
             //返回数据
             HashMap<String, Object> data = new HashMap<>();
             data.put("SchoolDetail", list);

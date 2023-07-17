@@ -1,12 +1,14 @@
 package com.scu.gkvr_system.entity;
 
+import java.util.List;
+
 public class SchoolDetail {
     private SchoolInfo schoolInfo;
-    private MajorScore majorScore;
+    private List<MajorScore> majorScoreList;
 
-    public SchoolDetail(SchoolInfo schoolInfo, MajorScore majorScore) {
+    public SchoolDetail(SchoolInfo schoolInfo, List<MajorScore> majorScore) {
         this.schoolInfo = schoolInfo;
-        this.majorScore = majorScore;
+        this.majorScoreList = majorScore;
     }
 
     public SchoolInfo getSchoolInfo() {
@@ -17,19 +19,19 @@ public class SchoolDetail {
         this.schoolInfo = schoolInfo;
     }
 
-    public MajorScore getMajorScore() {
-        return majorScore;
+    public List<MajorScore> getMajorScore() {
+        return majorScoreList;
     }
 
-    public void setMajorScore(MajorScore majorScore) {
-        this.majorScore = majorScore;
+    public void setMajorScore(List<MajorScore> majorScore) {
+        this.majorScoreList = majorScore;
     }
 
     @Override
     public String toString() {
         return "SchoolDetail{" +
                 "schoolInfo=" + schoolInfo +
-                ", majorScore=" + majorScore +
+                ", majorScoreList=" + majorScoreList +
                 '}';
     }
 }
