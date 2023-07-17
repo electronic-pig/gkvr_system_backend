@@ -1,6 +1,6 @@
 package com.scu.gkvr_system.mapper;
 
-import com.scu.gkvr_system.entity.ScLiScore;
+import com.scu.gkvr_system.entity.ScLiScoreNew;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author zzc
- * @since 2023-07-15
+ * @since 2023-07-17
  */
-public interface ScLiScoreMapper extends BaseMapper<ScLiScore> {
+public interface ScLiScoreNewMapper extends BaseMapper<ScLiScoreNew> {
 
 }
