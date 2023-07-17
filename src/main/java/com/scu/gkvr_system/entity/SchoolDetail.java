@@ -6,16 +6,13 @@ public class SchoolDetail {
     private SchoolInfo schoolInfo;
     private List<MajorScore> majorScoreList;
     private ScLiScoreNew scLiScoreNew;
+    private SchoolInfoDetail schoolInfoDetail;
 
-    public SchoolDetail(SchoolInfo schoolInfo, List<MajorScore> majorScore) {
-        this.schoolInfo = schoolInfo;
-        this.majorScoreList = majorScore;
-    }
-
-    public SchoolDetail(SchoolInfo schoolInfo, List<MajorScore> majorScoreList, ScLiScoreNew scLiScoreNew) {
+    public SchoolDetail(SchoolInfo schoolInfo, List<MajorScore> majorScoreList, ScLiScoreNew scLiScoreNew, SchoolInfoDetail schoolInfoDetail) {
         this.schoolInfo = schoolInfo;
         this.majorScoreList = majorScoreList;
         this.scLiScoreNew = scLiScoreNew;
+        this.schoolInfoDetail = schoolInfoDetail;
     }
 
     public SchoolInfo getSchoolInfo() {
@@ -42,12 +39,25 @@ public class SchoolDetail {
         this.scLiScoreNew = scLiScoreNew;
     }
 
+    public void setScLiScoreNew(ScLiScoreNew scLiScoreNew) {
+        this.scLiScoreNew = scLiScoreNew;
+    }
+
+    public SchoolInfoDetail getSchoolInfoDetail() {
+        return schoolInfoDetail;
+    }
+
+    public void setSchoolInfoDetail(SchoolInfoDetail schoolInfoDetail) {
+        this.schoolInfoDetail = schoolInfoDetail;
+    }
+
     @Override
     public String toString() {
         return "SchoolDetail{" +
                 "schoolInfo=" + schoolInfo +
                 ", majorScoreList=" + majorScoreList +
                 ", scLiScoreNew=" + scLiScoreNew +
+                ", schoolInfoDetail=" + schoolInfoDetail +
                 '}';
     }
 }
