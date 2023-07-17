@@ -2,11 +2,11 @@ package com.scu.gkvr_system.entity;
 
 public class SchoolDetail {
     private SchoolInfo schoolInfo;
-    private ScLiScore scLiScore;
+    private MajorScore majorScore;
 
-    public SchoolDetail(SchoolInfo schoolInfo, ScLiScore scLiScore) {
+    public SchoolDetail(SchoolInfo schoolInfo, MajorScore majorScore) {
         this.schoolInfo = schoolInfo;
-        this.scLiScore = scLiScore;
+        this.majorScore = majorScore;
     }
 
     public SchoolInfo getSchoolInfo() {
@@ -17,19 +17,19 @@ public class SchoolDetail {
         this.schoolInfo = schoolInfo;
     }
 
-    public ScLiScore getScLiScore() {
-        return scLiScore;
+    public MajorScore getMajorScore() {
+        return majorScore;
     }
 
-    public void setScLiScore(ScLiScore scLiScore) {
-        this.scLiScore = scLiScore;
+    public void setMajorScore(MajorScore majorScore) {
+        this.majorScore = majorScore;
     }
 
     @Override
     public String toString() {
         return "SchoolDetail{" +
                 "schoolInfo=" + schoolInfo +
-                ", scLiScore=" + scLiScore +
+                ", majorScore=" + majorScore +
                 '}';
     }
 }
