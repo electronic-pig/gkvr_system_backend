@@ -50,6 +50,7 @@ public class SchoolDetailServiceImpl extends ServiceImpl<SchoolDetailMapper, Sch
         if (list != null) {
             //返回数据
             HashMap<String, Object> data = new HashMap<>();
+            data.put("total",list.get(0).getMajorScoreList().size());
             data.put("SchoolDetail", list);
             return data;
         }
