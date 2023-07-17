@@ -1,9 +1,7 @@
 package com.scu.gkvr_system.controller;
 
 import com.scu.common.vo.Result;
-import com.scu.gkvr_system.service.IScLiScoreService;
 import com.scu.gkvr_system.service.ISchoolDetailService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

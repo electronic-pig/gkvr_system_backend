@@ -1,17 +1,10 @@
 package com.scu.gkvr_system.controller;
 
 import com.scu.common.vo.Result;
-import com.scu.gkvr_system.entity.SchoolInfo;
-import com.scu.gkvr_system.entity.User;
-import com.scu.gkvr_system.mapper.SchoolInfoMapper;
 import com.scu.gkvr_system.service.ISchoolInfoService;
-import com.scu.gkvr_system.service.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 /**

@@ -1,12 +1,8 @@
 package com.scu.gkvr_system.controller;
 
 import com.scu.common.vo.Result;
-import com.scu.gkvr_system.entity.ScLiScore;
-import com.scu.gkvr_system.entity.SchoolInfo;
-import com.scu.gkvr_system.entity.User;
 import com.scu.gkvr_system.service.IScLiScoreService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import java.util.Map;

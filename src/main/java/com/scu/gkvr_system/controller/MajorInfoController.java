@@ -2,9 +2,7 @@ package com.scu.gkvr_system.controller;
 
 import com.scu.common.vo.Result;
 import com.scu.gkvr_system.service.IMajorInfoService;
-import com.scu.gkvr_system.service.ISchoolInfoService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import java.util.Map;
