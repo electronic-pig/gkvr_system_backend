@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ import java.util.Map;
  */
 @Service
 public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, UserVoluntary> implements IUserVoluntaryService {
-    @Autowired
+    @Resource
     UserVoluntaryMapper userVoluntaryMapper;
     @Override
     public String addVoluntary(String userId, String schoolId, String majorId) {
@@ -47,41 +48,44 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
                     UpdateWrapper<UserVoluntary> updateWrapper = new UpdateWrapper<>();
                     updateWrapper.eq("user_id", userId);
                     updateWrapper.eq("school_id", schoolId);
-                    switch (userVoluntary.getCount()) {
-                        case 0:
-                            newUserVoluntary.setMajorIdA(majorId);
-                            newUserVoluntary.setCount(1);
-                            userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
-                            return "成功！";
-                        case 1:
-                            newUserVoluntary.setMajorIdB(majorId);
-                            newUserVoluntary.setCount(2);
-                            userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
-                            return "添加成功！";
-                        case 2:
-                            newUserVoluntary.setMajorIdC(majorId);
-                            newUserVoluntary.setCount(3);
-                            userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
-                            return "添加成功！";
-                        case 3:
-                            newUserVoluntary.setMajorIdD(majorId);
-                            newUserVoluntary.setCount(4);
-                            userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
-                            return "添加成功！";
-                        case 4:
-                            newUserVoluntary.setMajorIdE(majorId);
-                            newUserVoluntary.setCount(5);
-                            userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
-                            return "添加成功！";
-                        case 5:
-                            newUserVoluntary.setMajorIdF(majorId);
-                            newUserVoluntary.setCount(6);
-                            userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
-                            return "添加成功！";
-                        case 6:
-                            return "添加失败，该表格已满！";
-                        default:
-                            break;
+                    if (userVoluntary.getCount()==6){
+                        return "添加失败，该表格已满！";
+                    }
+                    if (userVoluntary.getMajorIdA()==null||userVoluntary.getMajorIdA().equals("")){
+                        newUserVoluntary.setMajorIdA(majorId);
+                        newUserVoluntary.setCount(userVoluntary.getCount()+1);
+                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+                        return "添加成功！";
+                    }
+                    if (userVoluntary.getMajorIdB()==null||userVoluntary.getMajorIdB().equals("")){
+                        newUserVoluntary.setMajorIdB(majorId);
+                        newUserVoluntary.setCount(userVoluntary.getCount()+1);
+                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+                        return "添加成功！";
+                    }
+                    if (userVoluntary.getMajorIdC()==null||userVoluntary.getMajorIdC().equals("")){
+                        newUserVoluntary.setMajorIdC(majorId);
+                        newUserVoluntary.setCount(userVoluntary.getCount()+1);
+                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+                        return "添加成功！";
+                    }
+                    if (userVoluntary.getMajorIdD()==null||userVoluntary.getMajorIdD().equals("")){
+                        newUserVoluntary.setMajorIdD(majorId);
+                        newUserVoluntary.setCount(userVoluntary.getCount()+1);
+                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+                        return "添加成功！";
+                    }
+                    if (userVoluntary.getMajorIdE()==null||userVoluntary.getMajorIdE().equals("")){
+                        newUserVoluntary.setMajorIdE(majorId);
+                        newUserVoluntary.setCount(userVoluntary.getCount()+1);
+                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+                        return "添加成功！";
+                    }
+                    if (userVoluntary.getMajorIdF()==null||userVoluntary.getMajorIdF().equals("")){
+                        newUserVoluntary.setMajorIdF(majorId);
+                        newUserVoluntary.setCount(userVoluntary.getCount()+1);
+                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+                        return "添加成功！";
                     }
             }
                 else  {
@@ -99,11 +103,74 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
                     return "添加失败，未能正确插入数据！";
                 }
             }
-        return "添加失败，数据库中有多条数据，请联系管理员处理！";
+        return "添加失败，数据库中有多条数据！";
     }
 
     @Override
-    public boolean deleteVoluntary(String userId, String schoolId, String majorId) {
-        return false;
+    public String deleteVoluntary(String userId, String schoolId, String majorId) {
+        LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserVoluntary::getUserId, userId);
+        wrapper.eq(UserVoluntary::getSchoolId, schoolId);
+        List<UserVoluntary> userVoluntaryList = this.baseMapper.selectList(wrapper);
+
+//      只查到一条数据
+        if (userVoluntaryList.size()==1){
+            UserVoluntary userVoluntary = userVoluntaryList.get(0);
+//            if (!(majorId.equals(userVoluntary.getMajorIdA())||
+//                    majorId.equals(userVoluntary.getMajorIdB())||
+//                    majorId.equals(userVoluntary.getMajorIdC())||
+//                    majorId.equals(userVoluntary.getMajorIdD())||
+//                    majorId.equals(userVoluntary.getMajorIdE())||
+//                    majorId.equals(userVoluntary.getMajorIdF()))) {
+//                UserVoluntary newUserVoluntary = new UserVoluntary();
+//                newUserVoluntary.setUserId(userId);
+//                newUserVoluntary.setSchoolId(schoolId);
+//                UpdateWrapper<UserVoluntary> updateWrapper = new UpdateWrapper<>();
+//                updateWrapper.eq("user_id", userId);
+//                updateWrapper.eq("school_id", schoolId);
+//                switch (userVoluntary.getCount()) {
+//                    case 0:
+//                        newUserVoluntary.setMajorIdA(majorId);
+//                        newUserVoluntary.setCount(1);
+//                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+//                        return "成功！";
+//                    case 1:
+//                        newUserVoluntary.setMajorIdB(majorId);
+//                        newUserVoluntary.setCount(2);
+//                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+//                        return "添加成功！";
+//                    case 2:
+//                        newUserVoluntary.setMajorIdC(majorId);
+//                        newUserVoluntary.setCount(3);
+//                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+//                        return "添加成功！";
+//                    case 3:
+//                        newUserVoluntary.setMajorIdD(majorId);
+//                        newUserVoluntary.setCount(4);
+//                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+//                        return "添加成功！";
+//                    case 4:
+//                        newUserVoluntary.setMajorIdE(majorId);
+//                        newUserVoluntary.setCount(5);
+//                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+//                        return "添加成功！";
+//                    case 5:
+//                        newUserVoluntary.setMajorIdF(majorId);
+//                        newUserVoluntary.setCount(6);
+//                        userVoluntaryMapper.update(newUserVoluntary, updateWrapper);
+//                        return "添加成功！";
+//                    case 6:
+//                        return "添加失败，该表格已满！";
+//                    default:
+//                        break;
+//                }
+//            }
+//            else  {
+//                return "添加失败，已添加过！";
+//            }
+        } else if (userVoluntaryList.size()==0) {
+            return "删除失败，不存在该表单！";
+        }
+        return "删除失败，数据库中有多条数据！";
     }
 }
