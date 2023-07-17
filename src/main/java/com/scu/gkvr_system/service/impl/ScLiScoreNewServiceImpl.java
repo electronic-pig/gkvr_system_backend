@@ -26,7 +26,6 @@ public class ScLiScoreNewServiceImpl extends ServiceImpl<ScLiScoreNewMapper, ScL
 //        根据学校名称查询学校分数信息
         LambdaQueryWrapper<ScLiScoreNew> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(ScLiScoreNew::getSchoolName, schoolName);
-        System.out.println(schoolName);
         List<ScLiScoreNew> searchScore = this.baseMapper.selectList(wrapper);
 
         if (searchScore != null) {

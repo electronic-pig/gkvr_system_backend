@@ -25,15 +25,6 @@ public class UserVoluntaryController {
     @Resource
     private IUserVoluntaryService userVoluntaryService;
 
-//    @PostMapping("/addVoluntary")
-//    public Result<Map<String,Object>> addVoluntary(@RequestBody String userId, @RequestBody String schoolId, @RequestBody String majorId){
-//        System.out.println(666);
-//        if (userVoluntaryService.addVoluntary(userId, schoolId, majorId)) {
-//            return Result.success("添加成功");
-//        }
-//        return Result.fail(20001, "添加失败");
-//    }
-
     @PostMapping("/addVoluntary")
     public Result<Map<String,Object>> addVoluntary(@RequestBody UserSchoolMajorId userSchoolMajorId){
         String message = userVoluntaryService.addVoluntary(userSchoolMajorId.getUserId(), userSchoolMajorId.getSchoolId(), userSchoolMajorId.getMajorId());

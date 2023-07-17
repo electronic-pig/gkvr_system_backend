@@ -117,12 +117,9 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
         if (userVoluntaryList.size()==1){
             UserVoluntary userVoluntary = userVoluntaryList.get(0);
             UserVoluntary newUserVoluntary = new UserVoluntary();
-            newUserVoluntary.setUserId(userId);
-            newUserVoluntary.setSchoolId(schoolId);
             UpdateWrapper<UserVoluntary> updateWrapper = new UpdateWrapper<>();
             updateWrapper.eq("user_id", userId);
             updateWrapper.eq("school_id", schoolId);
-            System.out.println(userVoluntary);
             if(userVoluntary.getMajorIdA().equals(majorId)){
                 newUserVoluntary.setMajorIdA("");
                 newUserVoluntary.setCount(userVoluntary.getCount()-1);
