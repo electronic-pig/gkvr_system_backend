@@ -31,26 +31,10 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
         wrapper.eq(UserVoluntary::getUserId, userId);
         wrapper.eq(UserVoluntary::getSchoolId, schoolId);
         List<UserVoluntary> userVoluntaryList = this.baseMapper.selectList(wrapper);
-        System.out.println(userVoluntaryList);
 
 //      只查到一条数据
         if (userVoluntaryList.size()==1){
             UserVoluntary userVoluntary = userVoluntaryList.get(0);
-//          未查到
-            if (userVoluntary==null){
-                userVoluntary = new UserVoluntary(userId,schoolId,majorId,1);
-                int rowsAffected = this.baseMapper.insert(userVoluntary);
-//              插入成功
-                if (rowsAffected > 0){
-                    return true;
-                }
-//              插入失败
-                else {
-                    return false;
-                }
-            }
-//          查到
-            else {
                 if (!(majorId.equals(userVoluntary.getMajorIdA())||
                         majorId.equals(userVoluntary.getMajorIdB())||
                         majorId.equals(userVoluntary.getMajorIdC())||
@@ -63,7 +47,6 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
                     UpdateWrapper<UserVoluntary> updateWrapper = new UpdateWrapper<>();
                     updateWrapper.eq("user_id", userId);
                     updateWrapper.eq("school_id", schoolId);
-                    System.out.println(updateWrapper);
                     switch (userVoluntary.getCount()) {
                         case 0:
                             newUserVoluntary.setMajorIdA(majorId);
@@ -101,9 +84,19 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
                         default:
                             break;
                     }
+            }
+        } else if (userVoluntaryList.size()==0) {
+                UserVoluntary userVoluntary = new UserVoluntary(userId,schoolId,majorId,1);
+                int rowsAffected = this.baseMapper.insert(userVoluntary);
+//              插入成功
+                if (rowsAffected > 0){
+                    return true;
+                }
+//              插入失败
+                else {
+                    return false;
                 }
             }
-        }
         return false;
     }
 }
