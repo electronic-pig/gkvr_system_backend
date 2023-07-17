@@ -44,10 +44,11 @@ public class UserVoluntaryController {
     }
     @PostMapping("/deleteVoluntary")
     public Result<Map<String,Object>> deleteVoluntary(@RequestBody UserSchoolMajorId userSchoolMajorId){
-        if (userVoluntaryService.deleteVoluntary(userSchoolMajorId.getUserId(), userSchoolMajorId.getSchoolId(), userSchoolMajorId.getMajorId())) {
-            return Result.success("删除成功");
+        String message = userVoluntaryService.deleteVoluntary(userSchoolMajorId.getUserId(), userSchoolMajorId.getSchoolId(), userSchoolMajorId.getMajorId());
+        if (message.equals("删除成功！")) {
+            return Result.success("删除成功！");
         }
-        return Result.fail(20001, "删除失败");
+        return Result.fail(20001, message);
     }
 
 }
