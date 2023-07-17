@@ -7,6 +7,7 @@ import com.scu.gkvr_system.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -21,6 +22,9 @@ import java.util.UUID;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+
+    @Resource
+    UserMapper userMapper;
     @Override
     public Map<String, Object> login(User user) {
         // 根据用户名和密码查询用户
@@ -31,10 +35,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         // 如果用户存在，返回用户信息，生成token,
         if (loginUser != null) {
             // 暂时用UUID，终极方案是JWT
-            String key = "user:" + UUID.randomUUID();
             //返回数据
             HashMap<String, Object> data = new HashMap<>();
-            data.put("token", key);
+            data.put("user", loginUser);
             return data;
         }
         return null;
@@ -52,6 +55,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return false;
         } else {
             // 执行插入操作
+            user.setId(userMapper.countUsers()+1);
             int rowsAffected = this.baseMapper.insert(user);
             if (rowsAffected > 0) {
                 // 插入成功
