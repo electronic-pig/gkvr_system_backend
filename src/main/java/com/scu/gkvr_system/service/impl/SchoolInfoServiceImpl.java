@@ -167,4 +167,14 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         System.out.println(list211);
         return result;
     }
+
+    @Override
+    public Map<String, Object> getDoubleHighSchools() {
+        LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SchoolInfo::getDoublehigh,"双一流");
+        List<SchoolInfo> list = this.baseMapper.selectList(wrapper);
+        Map<String, Object> result = new HashMap<>();
+        result.put("schools", list);
+        return result;
+    }
 }

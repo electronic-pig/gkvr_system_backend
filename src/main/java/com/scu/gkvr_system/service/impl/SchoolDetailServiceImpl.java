@@ -3,9 +3,11 @@ package com.scu.gkvr_system.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.scu.gkvr_system.entity.MajorScore;
 import com.scu.gkvr_system.entity.ScLiScore;
 import com.scu.gkvr_system.entity.SchoolDetail;
 import com.scu.gkvr_system.entity.SchoolInfo;
+import com.scu.gkvr_system.mapper.MajorScoreMapper;
 import com.scu.gkvr_system.mapper.SchoolDetailMapper;
 import com.scu.gkvr_system.service.ISchoolDetailService;
 import com.scu.gkvr_system.mapper.SchoolInfoMapper;
@@ -25,21 +27,18 @@ public class SchoolDetailServiceImpl extends ServiceImpl<SchoolDetailMapper, Sch
     private SchoolInfoMapper schoolInfoMapper;
 
     @Autowired
-    private ScLiScoreMapper schoolScoreMapper;
+    private MajorScoreMapper majorScoreMapper;
 
     @Override
     public Map<String, Object> getSchoolDetail(String schoolId) {
-//        System.out.println(schoolScoreMapper.selectList(new LambdaQueryWrapper<ScLiScore>()
-//                .eq(ScLiScore::getSchoolId, schoolId)));
-//        System.out.println("6");
         List<SchoolDetail> list = schoolInfoMapper.selectList(new LambdaQueryWrapper<SchoolInfo>()
                         .eq(SchoolInfo::getSchoolId, schoolId))
                 .stream()
                 .map(schoolInfo -> {
-                    ScLiScore scLiScore = schoolScoreMapper.selectOne(new LambdaQueryWrapper<ScLiScore>()
-                            .eq(ScLiScore::getSchoolId, schoolId));
+                    MajorScore majorScore = majorScoreMapper.selectOne(new LambdaQueryWrapper<MajorScore>()
+                            .eq(MajorScore::getSchoolId, schoolId));
 
-                    return new SchoolDetail(schoolInfo, scLiScore);
+                    return new SchoolDetail(schoolInfo, majorScore);
                 })
                 .collect(Collectors.toList());
 

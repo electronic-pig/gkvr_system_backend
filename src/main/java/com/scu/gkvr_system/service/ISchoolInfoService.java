@@ -28,5 +28,8 @@ public interface ISchoolInfoService extends IService<SchoolInfo> {
 
     Map<String, Object> get211Schools();
 
+    Map<String, Object> getDoubleHighSchools();
+
+
 
 }

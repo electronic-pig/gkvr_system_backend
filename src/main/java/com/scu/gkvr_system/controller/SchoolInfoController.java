@@ -80,4 +80,13 @@ public class SchoolInfoController {
         }
         return Result.fail(20001, "数据为空");
     }
+
+    @GetMapping("/doubleHigh")
+    public Result<Map<String, Object>> getDoubleHighSchools() {
+        Map<String, Object> data = schoolInfoService.get211Schools();
+        if (data != null) {
+            return Result.success("双一流类学校信息查询成功", data);
+        }
+        return Result.fail(20001, "数据为空");
+    }
 }
