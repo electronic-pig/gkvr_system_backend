@@ -113,7 +113,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 //        根据学校名称查询学校分数信息
         LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(SchoolInfo::getSchoolName, schoolName);
-        System.out.println(schoolName);
         List<SchoolInfo> list = this.baseMapper.selectList(wrapper);
 
         if (list != null) {
@@ -147,7 +146,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         }
         Map<String, Object> result = new HashMap<>();
         result.put("schools", list211);
-        System.out.println(list211);
         return result;
     }
 
