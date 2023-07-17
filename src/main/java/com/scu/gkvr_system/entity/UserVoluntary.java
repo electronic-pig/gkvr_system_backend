@@ -11,7 +11,6 @@ import java.io.Serializable;
  * @author zzc
  * @since 2023-07-17
  */
-@TableName("user_voluntary")
 public class UserVoluntary implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,6 +30,8 @@ public class UserVoluntary implements Serializable {
     private String majorIdE;
 
     private String majorIdF;
+
+    private int count;
 
     public String getUserId() {
         return userId;
@@ -89,17 +90,26 @@ public class UserVoluntary implements Serializable {
         this.majorIdF = majorIdF;
     }
 
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
     @Override
     public String toString() {
         return "UserVoluntary{" +
-            "userId=" + userId +
-            ", schoolId=" + schoolId +
-            ", majorIdA=" + majorIdA +
-            ", majorIdB=" + majorIdB +
-            ", majorIdC=" + majorIdC +
-            ", majorIdD=" + majorIdD +
-            ", majorIdE=" + majorIdE +
-            ", majorIdF=" + majorIdF +
-        "}";
+                "userId='" + userId + '\'' +
+                ", schoolId='" + schoolId + '\'' +
+                ", majorIdA='" + majorIdA + '\'' +
+                ", majorIdB='" + majorIdB + '\'' +
+                ", majorIdC='" + majorIdC + '\'' +
+                ", majorIdD='" + majorIdD + '\'' +
+                ", majorIdE='" + majorIdE + '\'' +
+                ", majorIdF='" + majorIdF + '\'' +
+                ", count=" + count +
+                '}';
     }
 }
