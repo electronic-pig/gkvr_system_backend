@@ -33,7 +33,7 @@ public class SchoolInfoController {
     }
     @GetMapping("/search")//样例：http://localhost:9999/schoolInfo/search?page=1&province_id=51&school_type_mark=&owner_mark=&is985=&is211=&doublehigh_mark=
     public Result<Map<String, Object>> searchSchools(@RequestParam("page") int page,
-                                                  @RequestParam("province_id") String province,
+                                                  @RequestParam("province_name") String province,
                                                   @RequestParam("school_type_mark") String schoolTypeMark,
                                                   @RequestParam("owner_mark") String ownerMark,
                                                   @RequestParam("is985") String is985,
