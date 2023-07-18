@@ -25,14 +25,12 @@ public class VoluntaryRecoController {
     @Resource
     private IVoluntaryRecoService userVoluntaryService;
 
-    @PostMapping("/getReco")
-    public Result<Map<String,Object>> getReco(@RequestBody(required = false)  VoluntaryReco voluntaryReco){
-        if (voluntaryReco == null) {
-            // 处理空参数的情况，例如返回默认值或执行其他逻辑
-            return Result.fail(20001, "参数为空");
-        }
+    @GetMapping("/getReco")
+    public Result<Map<String,Object>> getReco(int page,String provinceName,String is985,String is211,String isDoublehigh,
+                                              String isRisk,String isStable,String isEasy,String rank){
 
-        Map<String, Object> data = userVoluntaryService.getReco(voluntaryReco);
+        Map<String, Object> data = userVoluntaryService.getReco( page, provinceName, is985, is211, isDoublehigh,
+                 isRisk, isStable, isEasy, rank);
         if (data!= null) {
             return Result.success("获取成功",data);
         }

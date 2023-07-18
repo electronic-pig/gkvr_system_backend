@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static com.scu.gkvr_system.entity.VoluntaryReco.*;
 
@@ -36,15 +37,16 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
     @Resource
     SchoolInfoMapper schoolInfoMapper;
     @Override
-    public Map<String, Object> getReco(VoluntaryReco voluntaryReco) {
+    public Map<String, Object> getReco(int page,String provinceName,String is985,String is211,String isDoublehigh,
+                                       String isRisk,String isStable,String isEasy,String rank) {
 
         String schoolid;
         int rate_num;
 
-        String rank = voluntaryReco.getRank();
+
         Random random = new Random();
         int userRank = parseRank(rank);
-        List<ScLiScoreNew> filteredList = new ArrayList<>();
+
         List<RecoInfo> resultList = new ArrayList<>();
         //根据学校名称查询学校分数信息
         List<ScLiScoreNew> scLiScoreList = scLiScoreNewService.scoreListSearch();
@@ -64,7 +66,7 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
             int averageRank = (rank2020Int + rank2021Int + rank2022Int) / 3;
             //System.out.println(averageRank);
 
-            if (userRank>=(averageRank*0.6) && userRank <=(averageRank*0.83)) {
+            if (userRank>(averageRank*0.9) && userRank <=(averageRank*1.5)) {
 
                 schoolid=scLiScore.getSchoolId();
                 recoInfo.setSchoolId(schoolid);
@@ -72,7 +74,7 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
                 recoInfo.setAvgScore(String.valueOf(averageRank));
                 rate_num = random.nextInt(10) + 1;
                 recoInfo.setUpLineRate(String.valueOf(45-rate_num));
-                recoInfo.setIsRisk("1");
+                recoInfo.setIsRisk("可冲击");
 
                 resultList.add(recoInfo);
             }//冲
@@ -84,11 +86,11 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
                 recoInfo.setAvgScore(String.valueOf(averageRank));
                 rate_num = random.nextInt(10) + 1;
                 recoInfo.setUpLineRate(String.valueOf(52+rate_num));
-                recoInfo.setIsStable("1");
+                recoInfo.setIsStable("较稳妥");
                 System.out.println(schoolid);
                 resultList.add(recoInfo);
             }//稳
-            else if (userRank>(averageRank*0.9) && userRank <=(averageRank*1.5)) {
+            else if (userRank>=(averageRank*0.6) && userRank <=(averageRank*0.83)) {
 
                 schoolid=scLiScore.getSchoolId();
                 recoInfo.setSchoolId(schoolid);
@@ -96,7 +98,7 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
                 recoInfo.setAvgScore(String.valueOf(averageRank));
                 rate_num = random.nextInt(10) + 1;
                 recoInfo.setUpLineRate(String.valueOf(78+rate_num));
-                recoInfo.setIsEasy("1");
+                recoInfo.setIsEasy("可保底");
 
                 resultList.add(recoInfo);
             }//保
@@ -104,9 +106,22 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
 
         recoInfoService.completionRecoInfo(resultList);
 
+        List<RecoInfo> filteredList = resultList.stream()
+                .filter(info -> provinceName == null || provinceName.equals(info.getProvinceName()))
+                .filter(info -> is985 == null || is985.equals(info.getIs985()))
+                .filter(info -> is211 == null || is211.equals(info.getIs211()))
+                .filter(info -> isDoublehigh == null || isDoublehigh.equals(info.getIsDoublehigh()))
+                .filter(info -> isRisk == null || isRisk.equals(info.getIsRisk()))
+                .filter(info -> isStable == null || isStable.equals(info.getIsStable()))
+                .filter(info -> isEasy == null || isEasy.equals(info.getIsEasy()))
+                .collect(Collectors.toList());
+
+        int startIndex = (page - 1) * 10;  // 计算起始索引
+        int endIndex = Math.min(startIndex + 10, filteredList.size());  // 计算结束索引（最多10个学校）
+        List<RecoInfo> subList = filteredList.subList(startIndex, endIndex);
         Map<String, Object> result = new HashMap<>();
-        result.put("total", resultList.size());
-        result.put("reco_schools", resultList);
+        result.put("total", filteredList.size());
+        result.put("reco_schools", subList);
 
         return result;  // 返回指定页数的学校列表
     }
