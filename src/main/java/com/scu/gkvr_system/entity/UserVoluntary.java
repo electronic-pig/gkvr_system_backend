@@ -43,6 +43,11 @@ public class UserVoluntary implements Serializable {
         this.count = count;
     }
 
+    public UserVoluntary(String userId, String schoolId) {
+        this.userId = userId;
+        this.schoolId = schoolId;
+    }
+
     public String getUserId() {
         return userId;
     }
