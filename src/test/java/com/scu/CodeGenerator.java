@@ -12,12 +12,12 @@ public class CodeGenerator {
         String username = "root";
         String password = "123456";
         String moduleName = "gkvr_system";
-        String tabel = "user,school_info,major_info,sc_li_score_new,major_score,user_voluntary,school_info_detail";
-        String mapperLocation = "C:\\Users\\86135\\Desktop\\backend\\gkvr_system_backend\\src\\main\\resources\\mapper\\" + moduleName;
+        String tabel = "user,school_info,major_info,sc_li_score_new,major_score,user_voluntary,school_info_detail,voluntary_reco,reco_info";
+        String mapperLocation = "D:\\gitproj\\src\\main\\resources\\mapper\\" + moduleName;
         FastAutoGenerator.create(url, username, password)
                 .globalConfig(builder -> {
-                    builder.author("zzc") // 设置作者
-                            .outputDir("C:\\Users\\86135\\Desktop\\backend\\gkvr_system_backend\\src\\main\\java"); // 指定输出目录
+                    builder.author("wj") // 设置作者
+                            .outputDir("D:\\gitproj\\src\\main\\java"); // 指定输出目录
                 })
                 .packageConfig(builder -> {
                     builder.parent("com.scu") // 设置父包名

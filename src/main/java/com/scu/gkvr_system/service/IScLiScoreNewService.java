@@ -3,6 +3,7 @@ package com.scu.gkvr_system.service;
 import com.scu.gkvr_system.entity.ScLiScoreNew;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,4 +16,5 @@ import java.util.Map;
  */
 public interface IScLiScoreNewService extends IService<ScLiScoreNew> {
     Map<String, Object> scoreSearchByName(String schoolName);
+    List<ScLiScoreNew> scoreListSearch();
 }

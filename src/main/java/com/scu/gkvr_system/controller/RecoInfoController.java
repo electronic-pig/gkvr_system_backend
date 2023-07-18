@@ -1,7 +1,9 @@
 package com.scu.gkvr_system.controller;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -11,8 +13,9 @@ import org.springframework.stereotype.Controller;
  * @author wj
  * @since 2023-07-18
  */
-@Controller
+@RestController
 @RequestMapping("/gkvr_system/recoInfo")
+@CrossOrigin
 public class RecoInfoController {
 
 }

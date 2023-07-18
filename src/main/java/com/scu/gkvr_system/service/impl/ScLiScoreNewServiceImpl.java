@@ -38,4 +38,15 @@ public class ScLiScoreNewServiceImpl extends ServiceImpl<ScLiScoreNewMapper, ScL
         }
         return null;
     }
+
+    @Override
+    public List<ScLiScoreNew> scoreListSearch() {
+        LambdaQueryWrapper<ScLiScoreNew> wrapper = new LambdaQueryWrapper<>();
+        wrapper.select(ScLiScoreNew::getSchoolId, ScLiScoreNew::getSchoolName,ScLiScoreNew::getRank2020,ScLiScoreNew::getRank2021,ScLiScoreNew::getRank2022,ScLiScoreNew::getScore2022);
+        List<ScLiScoreNew> scLiScoreList = this.baseMapper.selectList(wrapper);
+        if (scLiScoreList != null) {
+            return scLiScoreList;
+        }
+        return null;
+    }
 }
