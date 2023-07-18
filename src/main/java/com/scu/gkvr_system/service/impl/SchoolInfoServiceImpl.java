@@ -141,8 +141,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         List<SchoolInfo> schools = this.baseMapper.selectList(queryWrapper);
         int startIndex = (page - 1) * 10;  // 计算起始索引
         int endIndex = Math.min(startIndex + 10, schools.size());  // 计算结束索引（最多10个学校）
-        System.out.println(startIndex);
-        System.out.println(endIndex);
         List<SchoolInfoAndScore> list = new ArrayList<>();
         int count = endIndex-startIndex;
         for (int i = startIndex;i<Math.min(count+endIndex-10,schools.size());i++) {
