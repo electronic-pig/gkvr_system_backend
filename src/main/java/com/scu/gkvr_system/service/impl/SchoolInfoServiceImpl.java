@@ -77,7 +77,7 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         LambdaQueryWrapper<SchoolInfo> queryWrapper = new LambdaQueryWrapper<>();
         // 逐个判断参数是否非空，执行查询并获取学校信息列表
         if (StringUtils.isNotBlank(province)) {
-            queryWrapper.eq(SchoolInfo::getProvinceId, province);
+            queryWrapper.eq(SchoolInfo::getProvinceName, province);
         }
         if (StringUtils.isNotBlank(schoolTypeMark)) {
             queryWrapper.eq(SchoolInfo::getschoolTypeMark, schoolTypeMark);
