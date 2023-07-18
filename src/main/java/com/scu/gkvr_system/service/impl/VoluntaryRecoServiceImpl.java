@@ -105,15 +105,20 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
         }
 
         recoInfoService.completionRecoInfo(resultList);
-
+        System.out.println(provinceName);
+        System.out.println(is985);
+        System.out.println(isRisk);
+        System.out.println(isEasy);
+        System.out.println(page);
+        System.out.println(rank);
         List<RecoInfo> filteredList = resultList.stream()
-                .filter(info -> provinceName == null || provinceName.equals(info.getProvinceName()))
-                .filter(info -> is985 == null || is985.equals(info.getIs985()))
-                .filter(info -> is211 == null || is211.equals(info.getIs211()))
-                .filter(info -> isDoublehigh == null || isDoublehigh.equals(info.getIsDoublehigh()))
-                .filter(info -> isRisk == null || isRisk.equals(info.getIsRisk()))
-                .filter(info -> isStable == null || isStable.equals(info.getIsStable()))
-                .filter(info -> isEasy == null || isEasy.equals(info.getIsEasy()))
+                .filter(info -> (provinceName == null || provinceName.equals("") || provinceName.equals(info.getProvinceName())))
+                .filter(info -> (is985 == null || is985.equals("") || is985.equals(info.getIs985())))
+                .filter(info -> (is211 == null || is211.equals("") || is211.equals(info.getIs211())))
+                .filter(info -> (isDoublehigh == null || isDoublehigh.equals("") || isDoublehigh.equals(info.getIsDoublehigh())))
+                .filter(info -> (isRisk == null || isRisk.equals("") || isRisk.equals(info.getIsRisk())))
+                .filter(info -> (isStable == null || isStable.equals("") || isStable.equals(info.getIsStable())))
+                .filter(info -> (isEasy == null || isEasy.equals("") || isEasy.equals(info.getIsEasy())))
                 .collect(Collectors.toList());
 
         int startIndex = (page - 1) * 10;  // 计算起始索引
