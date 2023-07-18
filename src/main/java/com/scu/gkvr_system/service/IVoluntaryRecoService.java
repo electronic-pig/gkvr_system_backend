@@ -16,6 +16,7 @@ import java.util.Map;
  * @since 2023-07-17
  */
 public interface IVoluntaryRecoService extends IService<VoluntaryReco> {
-    Map<String, Object> getReco(VoluntaryReco voluntaryReco);
+    Map<String, Object> getReco(int page,String provinceName,String is985,String is211,String isDoublehigh,
+                                String isRisk,String isStable,String isEasy,String rank);
 
 }
