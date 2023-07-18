@@ -51,13 +51,20 @@ public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo
     }
 
     @Override
-    public Map<String, Object> getMajorsByPage(int page) {
+    public Map<String, Object> getMajorsByPage(int page,String typeId) {
+        List<MajorInfo> majorInfos = new ArrayList<>();
+        for (int i = 0;i<majors.size();i++){
+            if (majors.get(i).getTypeId().equals(typeId)){
+                majorInfos.add(majors.get(i));
+            }
+        }
+        System.out.println(majorInfos);
         int startIndex = (page - 1) * 10;  // 计算起始索引
-        int endIndex = Math.min(startIndex + 10, majors.size());  // 计算结束索引（最多10个学校）
-        List<MajorInfo> subList = majors.subList(startIndex, endIndex);
+        int endIndex = Math.min(startIndex + 10, majorInfos.size());  // 计算结束索引（最多10个学校）
+        List<MajorInfo> subList = majorInfos.subList(startIndex, endIndex);
         Map<String, Object> result = new HashMap<>();
         result.put("page", page);
-        result.put("totalpage", (majors.size()/10)+1);
+        result.put("totalpage", (majorInfos.size()/10)+1);
         result.put("majors", subList);
 
         return result;  // 返回指定页数的学校列表

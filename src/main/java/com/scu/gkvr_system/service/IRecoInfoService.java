@@ -3,6 +3,8 @@ package com.scu.gkvr_system.service;
 import com.scu.gkvr_system.entity.RecoInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
