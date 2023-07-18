@@ -105,12 +105,6 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
         }
 
         recoInfoService.completionRecoInfo(resultList);
-        System.out.println(provinceName);
-        System.out.println(is985);
-        System.out.println(isRisk);
-        System.out.println(isEasy);
-        System.out.println(page);
-        System.out.println(rank);
         List<RecoInfo> filteredList = resultList.stream()
                 .filter(info -> (provinceName == null || provinceName.equals("") || provinceName.equals(info.getProvinceName())))
                 .filter(info -> (is985 == null || is985.equals("") || is985.equals(info.getIs985())))
