@@ -22,9 +22,9 @@ public class MajorInfoController {
     @Resource
     private IMajorInfoService majorInfoService;
     @GetMapping
-    public Result<Map<String, Object>> getMajorsByPage(@RequestParam("page") int page) {
+    public Result<Map<String, Object>> getMajorsByPage(@RequestParam("page") int page,@RequestParam String typeId) {
         majorInfoService.getAllMajor();//获取全部学校信息
-        Map<String, Object> data = majorInfoService.getMajorsByPage(page);
+        Map<String, Object> data = majorInfoService.getMajorsByPage(page,typeId);
         if (data != null) {
             return Result.success("专业信息查询成功", data);
         }

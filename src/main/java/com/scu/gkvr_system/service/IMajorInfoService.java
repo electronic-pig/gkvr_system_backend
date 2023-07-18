@@ -16,7 +16,7 @@ import java.util.Map;
 public interface IMajorInfoService extends IService<MajorInfo> {
     Map<String, Object> getAllMajor();
 
-    Map<String, Object> getMajorsByPage(int page);
+    Map<String, Object> getMajorsByPage(int page,String typeId);
 
     Map<String, Object> SearchByName(String majorName);
 }
