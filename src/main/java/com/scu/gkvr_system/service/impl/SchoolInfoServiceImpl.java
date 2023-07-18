@@ -145,7 +145,7 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         System.out.println(endIndex);
         List<SchoolInfoAndScore> list = new ArrayList<>();
         int count = endIndex-startIndex;
-        for (int i = startIndex;i<count+endIndex;i++) {
+        for (int i = startIndex;i<Math.min(count+endIndex,schools.size());i++) {
             SchoolInfoAndScore schoolInfoAndScore = new SchoolInfoAndScore();
             SchoolInfo schoolInfo = schools.get(i);
             LambdaQueryWrapper<ScLiScoreNew> wrapper = new LambdaQueryWrapper<>();
