@@ -31,4 +31,13 @@ public class MajorInfoController {
         return Result.fail(20001, "数据为空");
     }
 
+    @GetMapping("/searchByName")//样例：http://localhost:9999/majorInfo/searchByName?majorName=医
+    public Result<Map<String, Object>> majorSearchByName(@RequestParam String majorName) {
+        Map<String, Object> data = majorInfoService.SearchByName(majorName);
+        if (data != null) {
+            return Result.success("查询成功", data);
+        }
+        return Result.fail(20001, "查询失败");
+    }
+
 }

@@ -62,4 +62,21 @@ public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo
 
         return result;  // 返回指定页数的学校列表
     }
+
+    @Override
+    public Map<String, Object> SearchByName(String majorName) {
+        LambdaQueryWrapper<MajorInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.like(MajorInfo::getMajorName, majorName);
+        List<MajorInfo> list = this.baseMapper.selectList(wrapper);
+
+        if (list != null) {
+            //返回数据
+            HashMap<String, Object> data = new HashMap<>();
+            data.put("total", list.size());
+            data.put("majorInfo", list);
+
+            return data;
+        }
+        return null;
+    }
 }
