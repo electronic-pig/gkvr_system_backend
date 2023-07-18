@@ -1,6 +1,7 @@
 package com.scu.gkvr_system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.scu.gkvr_system.entity.MajorInfo;
 import com.scu.gkvr_system.entity.SchoolInfo;
 import com.scu.gkvr_system.mapper.MajorInfoMapper;
@@ -53,12 +54,17 @@ public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo
     @Override
     public Map<String, Object> getMajorsByPage(int page,String typeId) {
         List<MajorInfo> majorInfos = new ArrayList<>();
-        for (int i = 0;i<majors.size();i++){
-            if (majors.get(i).getTypeId().equals(typeId)){
-                majorInfos.add(majors.get(i));
+        if (StringUtils.isNotBlank(typeId)){
+            for (int i = 0;i<majors.size();i++){
+                if (majors.get(i).getTypeId().equals(typeId)){
+                    majorInfos.add(majors.get(i));
+                }
             }
         }
-        System.out.println(majorInfos);
+        else {
+            majorInfos = majors;
+        }
+
         int startIndex = (page - 1) * 10;  // 计算起始索引
         int endIndex = Math.min(startIndex + 10, majorInfos.size());  // 计算结束索引（最多10个学校）
         List<MajorInfo> subList = majorInfos.subList(startIndex, endIndex);
