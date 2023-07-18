@@ -45,6 +45,20 @@ public class SchoolInfoController {
         }
         return Result.fail(20001, "数据为空");
     }
+    @GetMapping("/searchAndScore")//样例：http://localhost:9999/schoolInfo/search?page=1&province_id=51&school_type_mark=&owner_mark=&is985=&is211=&doublehigh_mark=
+    public Result<Map<String, Object>> searchSchoolsAndScore(@RequestParam("page") int page,
+                                                     @RequestParam("province_name") String province,
+                                                     @RequestParam("school_type_mark") String schoolTypeMark,
+                                                     @RequestParam("owner_mark") String ownerMark,
+                                                     @RequestParam("is985") String is985,
+                                                     @RequestParam("is211") String is211,
+                                                     @RequestParam("doublehigh_mark") String doublehighMark) {
+        Map<String, Object> data = schoolInfoService.searchSchoolsAndScore(page,province,schoolTypeMark,ownerMark,is985,is211,doublehighMark);
+        if (data != null) {
+            return Result.success("学校信息查询成功", data);
+        }
+        return Result.fail(20001, "数据为空");
+    }
 
     @GetMapping("/searchByName")//样例：http://localhost:9999/schoolInfo/searchByName?schoolName=交通大学
     public Result<Map<String, Object>> scoreSearchByName(@RequestParam String schoolName) {

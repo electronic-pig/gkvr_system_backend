@@ -2,12 +2,16 @@ package com.scu.gkvr_system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.scu.gkvr_system.entity.ScLiScoreNew;
 import com.scu.gkvr_system.entity.SchoolInfo;
+import com.scu.gkvr_system.entity.SchoolInfoAndScore;
+import com.scu.gkvr_system.mapper.ScLiScoreNewMapper;
 import com.scu.gkvr_system.mapper.SchoolInfoMapper;
 import com.scu.gkvr_system.service.ISchoolInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 /**
@@ -21,6 +25,9 @@ import java.util.*;
 @Service
 public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolInfo> implements ISchoolInfoService {
     private List<SchoolInfo> schools;  // 学校列表，假设已经包含了所有学校信息
+
+    @Resource
+    ScLiScoreNewMapper scLiScoreNewMapper;
 
 
     @Override
@@ -104,6 +111,92 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         result.put("page", page);
         result.put("total", schools.size());
         result.put("schools", subList);
+
+        return result;  // 返回指定页数的学校列表
+    }
+
+    @Override
+    public Map<String, Object> searchSchoolsAndScore(int page, String province, String schoolTypeMark, String ownerMark, String is985, String is211, String doublehighMark) {
+        // 创建 LambdaQueryWrapper 对象
+        LambdaQueryWrapper<SchoolInfo> queryWrapper = new LambdaQueryWrapper<>();
+        // 逐个判断参数是否非空，执行查询并获取学校信息列表
+        if (StringUtils.isNotBlank(province)) {
+            queryWrapper.eq(SchoolInfo::getProvinceName, province);
+        }
+        if (StringUtils.isNotBlank(schoolTypeMark)) {
+            queryWrapper.eq(SchoolInfo::getschoolTypeMark, schoolTypeMark);
+        }
+        if (StringUtils.isNotBlank(ownerMark)) {
+            queryWrapper.eq(SchoolInfo::getOwnerMark, ownerMark);
+        }
+        if (StringUtils.isNotBlank(is985)) {
+            queryWrapper.eq(SchoolInfo::getIs985, is985);
+        }
+        if (StringUtils.isNotBlank(is211)) {
+            queryWrapper.eq(SchoolInfo::getIs211, is211);
+        }
+        if (StringUtils.isNotBlank(doublehighMark)) {
+            queryWrapper.eq(SchoolInfo::getDoublehighMark, doublehighMark);
+        }
+        List<SchoolInfo> schools = this.baseMapper.selectList(queryWrapper);
+        int startIndex = (page - 1) * 10;  // 计算起始索引
+        int endIndex = Math.min(startIndex + 10, schools.size());  // 计算结束索引（最多10个学校）
+        System.out.println(startIndex);
+        System.out.println(endIndex);
+        List<SchoolInfoAndScore> list = new ArrayList<>();
+        int count = endIndex-startIndex;
+        for (int i = startIndex;i<count+endIndex;i++) {
+            SchoolInfoAndScore schoolInfoAndScore = new SchoolInfoAndScore();
+            SchoolInfo schoolInfo = schools.get(i);
+            LambdaQueryWrapper<ScLiScoreNew> wrapper = new LambdaQueryWrapper<>();
+            wrapper.eq(ScLiScoreNew::getSchoolId, schoolInfo.getSchoolId());
+            List<ScLiScoreNew> scLiScoreNew = scLiScoreNewMapper.selectList(wrapper);
+            if (scLiScoreNew.size()==0){
+                count++;
+                continue;
+            }
+
+//            System.out.println(scLiScoreNew.get(0));
+//            System.out.println(scLiScoreNew.size());
+            schoolInfoAndScore.setId(schoolInfo.getId());
+            schoolInfoAndScore.setBelongs(schoolInfo.getBelongs());
+            schoolInfoAndScore.setCentral(schoolInfo.getCentral());
+            schoolInfoAndScore.setCityId(schoolInfo.getCityId());
+            schoolInfoAndScore.setCityName(schoolInfo.getCityName());
+            schoolInfoAndScore.setCodeEnroll(schoolInfo.getCodeEnroll());
+            schoolInfoAndScore.setCountyId(schoolInfo.getCountyId());
+            schoolInfoAndScore.setCountyName(schoolInfo.getCountyName());
+            schoolInfoAndScore.setDegreeMark(schoolInfo.getDegreeMark());
+            schoolInfoAndScore.setDoublehigh(schoolInfo.getDoublehigh());
+            schoolInfoAndScore.setIs211(schoolInfo.getIs211());
+            schoolInfoAndScore.setIs985(schoolInfo.getIs985());
+            schoolInfoAndScore.setSchoolName(schoolInfo.getSchoolName());
+            schoolInfoAndScore.setDegreeMark(schoolInfo.getDegreeMark());
+            schoolInfoAndScore.setDegree(schoolInfo.getDegree());
+            schoolInfoAndScore.setOwnerMark(schoolInfo.getOwnerMark());
+            schoolInfoAndScore.setOwner(schoolInfo.getOwner());
+            schoolInfoAndScore.setProvinceId(schoolInfo.getProvinceId());
+            schoolInfoAndScore.setProvinceName(schoolInfo.getProvinceName());
+            schoolInfoAndScore.setSchoolId(schoolInfo.getSchoolId());
+            schoolInfoAndScore.setSchoolLevel(schoolInfo.getSchoolLevel());
+            schoolInfoAndScore.setSchoolTypeMark(schoolInfo.getschoolTypeMark());
+            schoolInfoAndScore.setSchoolType(schoolInfo.getSchoolType());
+            schoolInfoAndScore.setMonthView(schoolInfo.getMonthView());
+            schoolInfoAndScore.setTotalView(schoolInfo.getTotalView());
+            schoolInfoAndScore.setScore2022(scLiScoreNew.get(0).getScore2022());
+            schoolInfoAndScore.setAvgScore(String.valueOf((Integer.parseInt(scLiScoreNew.get(0).getScore2020()) +
+                    Integer.parseInt(scLiScoreNew.get(0).getScore2021()) +
+                    Integer.parseInt(scLiScoreNew.get(0).getScore2022())) / 3));
+            list.add(schoolInfoAndScore);
+        }
+
+
+//        List<SchoolInfo> subList = schools.subList(startIndex, endIndex);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("page", page);
+        result.put("total", schools.size());
+        result.put("schools", list);
 
         return result;  // 返回指定页数的学校列表
     }
