@@ -2,7 +2,9 @@ package com.scu.gkvr_system.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.scu.gkvr_system.entity.SchoolInfo;
 import com.scu.gkvr_system.entity.UserVoluntary;
+import com.scu.gkvr_system.mapper.SchoolInfoMapper;
 import com.scu.gkvr_system.mapper.UserVoluntaryMapper;
 import com.scu.gkvr_system.service.IUserVoluntaryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -27,6 +29,8 @@ import java.util.Map;
 public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, UserVoluntary> implements IUserVoluntaryService {
     @Resource
     UserVoluntaryMapper userVoluntaryMapper;
+    @Resource
+    SchoolInfoMapper schoolInfoMapper;
 
 
 
@@ -266,8 +270,16 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
         LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(UserVoluntary::getUserId,userId);
         List<UserVoluntary> userVoluntaryList = this.baseMapper.selectList(queryWrapper);
-        if (userVoluntaryList==null){
+        if (userVoluntaryList.size()==0){
             return null;
+        }
+        for (int i = 0;i<userVoluntaryList.size();i++){
+            UserVoluntary userVoluntary = new UserVoluntary();
+            userVoluntary.clone(userVoluntaryList.get(i));
+            LambdaQueryWrapper<SchoolInfo> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+            lambdaQueryWrapper.eq(SchoolInfo::getSchoolId,userVoluntary.getSchoolId());
+            userVoluntary.setSchoolId(schoolInfoMapper.selectOne(lambdaQueryWrapper).getSchoolName());
+            userVoluntaryList.set(i,userVoluntary);
         }
         HashMap<String, Object> data = new HashMap<>();
         data.put("userVoluntary", userVoluntaryList);
