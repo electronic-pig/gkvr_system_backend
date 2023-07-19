@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -188,5 +189,19 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
                 return "删除失败，数据库中有多条数据！";
             }
         }
+    }
+
+    @Override
+    public Map<String, Object> getVoluntary(String userId) {
+        LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UserVoluntary::getUserId,userId);
+        List<UserVoluntary> userVoluntaryList = this.baseMapper.selectList(queryWrapper);
+//        System.out.println(userVoluntary);
+        if (userVoluntaryList==null){
+            return null;
+        }
+        HashMap<String, Object> data = new HashMap<>();
+        data.put("userVoluntary", userVoluntaryList);
+        return data;
     }
 }
