@@ -27,8 +27,11 @@ import java.util.Map;
 public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, UserVoluntary> implements IUserVoluntaryService {
     @Resource
     UserVoluntaryMapper userVoluntaryMapper;
+
+
+
     @Override
-    public String addVoluntary(String userId, String schoolId, String majorId) {
+    public String addOneVoluntary(String userId, String schoolId, String majorId) {
 
         LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserVoluntary::getUserId, userId);
@@ -122,6 +125,36 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
     }
 
     @Override
+    public String addVoluntary(UserVoluntary userVoluntary) {
+        if (userVoluntary.getUserId()!=null&&!(userVoluntary.getUserId().equals(""))&&
+                userVoluntary.getSchoolId()!=null&&!(userVoluntary.getSchoolId().equals(""))) {
+            LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(UserVoluntary::getUserId,userVoluntary.getUserId());
+            queryWrapper.eq(UserVoluntary::getSchoolId,userVoluntary.getSchoolId());
+            List<UserVoluntary> list = this.baseMapper.selectList(queryWrapper);
+            if (list.size()==0) {
+                this.baseMapper.insert(userVoluntary);
+                return "添加成功！";
+            }
+            else if (list.size()==1){
+                UpdateWrapper<UserVoluntary> updateWrapper = new UpdateWrapper<>();
+                updateWrapper.eq("user_id",userVoluntary.getUserId());
+                updateWrapper.eq("school_id",userVoluntary.getSchoolId());
+                this.baseMapper.update(userVoluntary,updateWrapper);
+                return "添加成功！";
+            }
+            else {
+                return "添加失败，存在多条数据！";
+            }
+        }
+        else {
+            return "添加失败，userId或schoolId为空！";
+        }
+    }
+
+
+
+    @Override
     public String deleteVoluntary(String userId, String schoolId, String majorId) {
         LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserVoluntary::getUserId, userId);
@@ -196,7 +229,6 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
         LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(UserVoluntary::getUserId,userId);
         List<UserVoluntary> userVoluntaryList = this.baseMapper.selectList(queryWrapper);
-//        System.out.println(userVoluntary);
         if (userVoluntaryList==null){
             return null;
         }

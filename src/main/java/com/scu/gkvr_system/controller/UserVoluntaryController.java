@@ -2,6 +2,7 @@ package com.scu.gkvr_system.controller;
 
 import com.scu.common.vo.Result;
 import com.scu.gkvr_system.entity.UserSchoolMajorId;
+import com.scu.gkvr_system.entity.UserVoluntary;
 import com.scu.gkvr_system.service.IUserVoluntaryService;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
@@ -25,9 +26,18 @@ public class UserVoluntaryController {
     @Resource
     private IUserVoluntaryService userVoluntaryService;
 
+    @PostMapping("/addOneVoluntary")
+    public Result<Map<String,Object>> addOneVoluntary(@RequestBody UserSchoolMajorId userSchoolMajorId){
+        String message = userVoluntaryService.addOneVoluntary(userSchoolMajorId.getUserId(), userSchoolMajorId.getSchoolId(), userSchoolMajorId.getMajorId());
+        if (message.equals("添加成功！")) {
+            return Result.success("添加成功！");
+        }
+        return Result.fail(20001, message);
+    }
+
     @PostMapping("/addVoluntary")
-    public Result<Map<String,Object>> addVoluntary(@RequestBody UserSchoolMajorId userSchoolMajorId){
-        String message = userVoluntaryService.addVoluntary(userSchoolMajorId.getUserId(), userSchoolMajorId.getSchoolId(), userSchoolMajorId.getMajorId());
+    public Result<Map<String,Object>> addVoluntary(@RequestBody UserVoluntary userVoluntary){
+        String message = userVoluntaryService.addVoluntary(userVoluntary);
         if (message.equals("添加成功！")) {
             return Result.success("添加成功！");
         }

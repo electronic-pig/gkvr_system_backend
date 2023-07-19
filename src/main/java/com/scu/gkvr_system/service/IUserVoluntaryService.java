@@ -16,8 +16,11 @@ import java.util.Map;
  * @since 2023-07-17
  */
 public interface IUserVoluntaryService extends IService<UserVoluntary> {
-    String addVoluntary(String userId, String schoolId, String majorId);
-    String deleteVoluntary(String userId, String schoolId, String majorId);
+    String addOneVoluntary(String userId, String schoolId, String majorId);
+
+    String addVoluntary(UserVoluntary userVoluntary);
+    String deleteVoluntary(String userId, String schoolId, String majorId)
+    ;
 
     Map<String,Object> getVoluntary(String userId);
 }
