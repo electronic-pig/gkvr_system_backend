@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.scu.gkvr_system.entity.*;
 import com.scu.gkvr_system.mapper.*;
 import com.scu.gkvr_system.service.ISchoolDetailService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,16 +16,16 @@ import java.util.stream.Collectors;
 @Service
 public class SchoolDetailServiceImpl extends ServiceImpl<SchoolDetailMapper, SchoolDetail> implements ISchoolDetailService {
 
-    @Autowired
+    @Resource
     private SchoolInfoMapper schoolInfoMapper;
 
-    @Autowired
+    @Resource
     private ScLiScoreNewMapper scLiScoreNewMapper;
 
-    @Autowired
+    @Resource
     private MajorScoreMapper majorScoreMapper;
 
-    @Autowired
+    @Resource
     private SchoolInfoDetailMapper schoolInfoDetailMapper;
 
     @Override
@@ -46,10 +46,10 @@ public class SchoolDetailServiceImpl extends ServiceImpl<SchoolDetailMapper, Sch
                 })
                 .collect(Collectors.toList());
 
-        if (list != null) {
+        if (list.size() != 0) {
             //返回数据
             HashMap<String, Object> data = new HashMap<>();
-            data.put("total",list.get(0).getMajorScoreList().size());
+            data.put("total", list.get(0).getMajorScoreList().size());
             data.put("SchoolDetail", list);
             return data;
         }
