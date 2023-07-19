@@ -18,4 +18,6 @@ import java.util.Map;
 public interface IUserVoluntaryService extends IService<UserVoluntary> {
     String addVoluntary(String userId, String schoolId, String majorId);
     String deleteVoluntary(String userId, String schoolId, String majorId);
+
+    Map<String,Object> getVoluntary(String userId);
 }
