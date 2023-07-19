@@ -19,8 +19,8 @@ public interface IUserVoluntaryService extends IService<UserVoluntary> {
     String addOneVoluntary(String userId, String schoolId, String majorId);
 
     String addVoluntary(UserVoluntary userVoluntary);
-    String deleteVoluntary(String userId, String schoolId, String majorId)
-    ;
+    String deleteOneVoluntary(String userId, String schoolId, String majorId);
+    String deleteVoluntary(String userId, String schoolId);
 
     Map<String,Object> getVoluntary(String userId);
 }

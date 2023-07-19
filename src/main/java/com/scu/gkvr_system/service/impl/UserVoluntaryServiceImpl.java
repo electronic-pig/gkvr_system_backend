@@ -155,7 +155,7 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
 
 
     @Override
-    public String deleteVoluntary(String userId, String schoolId, String majorId) {
+    public String deleteOneVoluntary(String userId, String schoolId, String majorId) {
         LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(UserVoluntary::getUserId, userId);
         wrapper.eq(UserVoluntary::getSchoolId, schoolId);
@@ -221,6 +221,30 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
             else {
                 return "删除失败，数据库中有多条数据！";
             }
+        }
+    }
+
+    @Override
+    public String deleteVoluntary(String userId, String schoolId) {
+        if (userId!=null&&!(userId.equals(""))&&
+                schoolId!=null&&!(schoolId.equals(""))) {
+            LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(UserVoluntary::getUserId,userId);
+            queryWrapper.eq(UserVoluntary::getSchoolId,schoolId);
+            List<UserVoluntary> list = this.baseMapper.selectList(queryWrapper);
+            if (list.size()==1) {
+                this.baseMapper.delete(queryWrapper);
+                return "删除成功！";
+            }
+            else if (list.size()==0){
+                return "删除失败，未查询到该条数据！";
+            }
+            else {
+                return "删除失败，存在多条数据！";
+            }
+        }
+        else {
+            return "删除失败，userId或schoolId为空！";
         }
     }
 
