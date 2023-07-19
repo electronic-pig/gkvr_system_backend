@@ -137,11 +137,24 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
                 return "添加成功！";
             }
             else if (list.size()==1){
-                UpdateWrapper<UserVoluntary> updateWrapper = new UpdateWrapper<>();
-                updateWrapper.eq("user_id",userVoluntary.getUserId());
-                updateWrapper.eq("school_id",userVoluntary.getSchoolId());
-                this.baseMapper.update(userVoluntary,updateWrapper);
-                return "添加成功！";
+                queryWrapper.eq(UserVoluntary::getMajorIdA,userVoluntary.getMajorIdA());
+                queryWrapper.eq(UserVoluntary::getMajorIdB,userVoluntary.getMajorIdB());
+                queryWrapper.eq(UserVoluntary::getMajorIdC,userVoluntary.getMajorIdC());
+                queryWrapper.eq(UserVoluntary::getMajorIdD,userVoluntary.getMajorIdD());
+                queryWrapper.eq(UserVoluntary::getMajorIdE,userVoluntary.getMajorIdE());
+                queryWrapper.eq(UserVoluntary::getMajorIdF,userVoluntary.getMajorIdF());
+                queryWrapper.eq(UserVoluntary::getCount,userVoluntary.getCount());
+                list = this.baseMapper.selectList(queryWrapper);
+                if (list.size()==0) {
+                    UpdateWrapper<UserVoluntary> updateWrapper = new UpdateWrapper<>();
+                    updateWrapper.eq("user_id", userVoluntary.getUserId());
+                    updateWrapper.eq("school_id", userVoluntary.getSchoolId());
+                    this.baseMapper.update(userVoluntary, updateWrapper);
+                    return "添加成功！";
+                }
+                else {
+                    return "添加失败，已存在该条数据！";
+                }
             }
             else {
                 return "添加失败，存在多条数据！";
