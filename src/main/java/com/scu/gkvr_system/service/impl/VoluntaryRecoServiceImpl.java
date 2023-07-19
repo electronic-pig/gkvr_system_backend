@@ -58,7 +58,6 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
         //根据学校名称查询学校分数信息
         List<ScLiScoreNew> scLiScoreList = scLiScoreNewService.scoreListSearch();
 
-        System.out.println(scLiScoreList);
         for (ScLiScoreNew scLiScore : scLiScoreList) {
 
             RecoInfo recoInfo = new RecoInfo();
@@ -94,7 +93,6 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
                 rate_num = random.nextInt(10) + 1;
                 recoInfo.setUpLineRate(String.valueOf(52+rate_num));
                 recoInfo.setIsStable("较稳妥");
-                System.out.println(schoolid);
                 resultList.add(recoInfo);
             }//稳
             else if (userRank>=(averageRank*0.6) && userRank <=(averageRank*0.83)) {
