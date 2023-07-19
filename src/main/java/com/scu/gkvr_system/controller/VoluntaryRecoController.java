@@ -27,10 +27,10 @@ public class VoluntaryRecoController {
 
     @GetMapping("/getReco")
     public Result<Map<String,Object>> getReco(int page,String provinceName,String is985,String is211,String isDoublehigh,
-                                              String isRisk,String isStable,String isEasy,String rank){
+                                              String isRisk,String isStable,String isEasy,String score){
 
         Map<String, Object> data = userVoluntaryService.getReco( page, provinceName, is985, is211, isDoublehigh,
-                 isRisk, isStable, isEasy, rank);
+                 isRisk, isStable, isEasy, score);
         if (data!= null) {
             return Result.success("获取成功",data);
         }

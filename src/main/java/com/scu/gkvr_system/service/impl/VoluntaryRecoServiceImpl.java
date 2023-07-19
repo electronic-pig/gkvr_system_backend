@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import java.util.Random;
 import com.scu.gkvr_system.entity.*;
 import com.scu.gkvr_system.mapper.SchoolInfoMapper;
+import com.scu.gkvr_system.mapper.ScoreRankMapper;
 import com.scu.gkvr_system.mapper.VoluntaryRecoMapper;
 import com.scu.gkvr_system.service.IVoluntaryRecoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -36,16 +37,22 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
     private RecoInfoServiceImpl recoInfoService;
     @Resource
     SchoolInfoMapper schoolInfoMapper;
+   @Resource
+   ScoreRankMapper scoreRankMapper;
     @Override
     public Map<String, Object> getReco(int page,String provinceName,String is985,String is211,String isDoublehigh,
-                                       String isRisk,String isStable,String isEasy,String rank) {
+                                       String isRisk,String isStable,String isEasy,String score) {
 
         String schoolid;
         int rate_num;
 
-
+        LambdaQueryWrapper<ScoreRank> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(ScoreRank::getKeyIndex,score);
+        queryWrapper.select(ScoreRank::getKeyIndex,ScoreRank::getScore,ScoreRank::getNum
+                ,ScoreRank::getTotal,ScoreRank::getRankRange,ScoreRank::getBatchName,ScoreRank::getControlscore);
+        ScoreRank scoreRank = scoreRankMapper.selectOne(queryWrapper);
         Random random = new Random();
-        int userRank = parseRank(rank);
+        int userRank = parseRank(scoreRank.getTotal());
 
         List<RecoInfo> resultList = new ArrayList<>();
         //根据学校名称查询学校分数信息
@@ -120,6 +127,7 @@ public class VoluntaryRecoServiceImpl extends ServiceImpl<VoluntaryRecoMapper, V
         List<RecoInfo> subList = filteredList.subList(startIndex, endIndex);
         Map<String, Object> result = new HashMap<>();
         result.put("total", filteredList.size());
+        result.put("rank",scoreRank.getTotal());
         result.put("reco_schools", subList);
 
         return result;  // 返回指定页数的学校列表
