@@ -12,7 +12,7 @@ public class CodeGenerator {
         String username = "root";
         String password = "123456";
         String moduleName = "gkvr_system";
-        String tabel = "user,school_info,major_info,sc_li_score_new,major_score,user_voluntary,school_info_detail,voluntary_reco,reco_info";
+        String tabel = "user,school_info,major_info,sc_li_score_new,major_score,user_voluntary,school_info_detail,voluntary_reco,reco_info,score_rank";
         String mapperLocation = "D:\\gitproj\\src\\main\\resources\\mapper\\" + moduleName;
         FastAutoGenerator.create(url, username, password)
                 .globalConfig(builder -> {
