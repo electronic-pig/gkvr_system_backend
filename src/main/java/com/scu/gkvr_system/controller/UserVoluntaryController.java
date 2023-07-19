@@ -1,6 +1,7 @@
 package com.scu.gkvr_system.controller;
 
 import com.scu.common.vo.Result;
+import com.scu.gkvr_system.entity.UserSchoolId;
 import com.scu.gkvr_system.entity.UserSchoolMajorId;
 import com.scu.gkvr_system.entity.UserVoluntary;
 import com.scu.gkvr_system.service.IUserVoluntaryService;
@@ -43,9 +44,18 @@ public class UserVoluntaryController {
         }
         return Result.fail(20001, message);
     }
+    @PostMapping("/deleteOneVoluntary")
+    public Result<Map<String,Object>> deleteOneVoluntary(@RequestBody UserSchoolMajorId userSchoolMajorId){
+        String message = userVoluntaryService.deleteOneVoluntary(userSchoolMajorId.getUserId(), userSchoolMajorId.getSchoolId(), userSchoolMajorId.getMajorId());
+        if (message.equals("删除成功！")) {
+            return Result.success("删除成功！");
+        }
+        return Result.fail(20001, message);
+    }
+
     @PostMapping("/deleteVoluntary")
-    public Result<Map<String,Object>> deleteVoluntary(@RequestBody UserSchoolMajorId userSchoolMajorId){
-        String message = userVoluntaryService.deleteVoluntary(userSchoolMajorId.getUserId(), userSchoolMajorId.getSchoolId(), userSchoolMajorId.getMajorId());
+    public Result<Map<String,Object>> deleteVoluntary(@RequestBody UserSchoolId userSchoolId){
+        String message = userVoluntaryService.deleteVoluntary(userSchoolId.getUserId(), userSchoolId.getSchoolId());
         if (message.equals("删除成功！")) {
             return Result.success("删除成功！");
         }
