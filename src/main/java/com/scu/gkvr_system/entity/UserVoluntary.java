@@ -112,7 +112,18 @@ public class UserVoluntary implements Serializable {
     public void setCount(int count) {
         this.count = count;
     }
+    public void clone(UserVoluntary userVoluntary){
+        this.setUserId(userVoluntary.getUserId());
+        this.setSchoolId(userVoluntary.getSchoolId());
+        this.setMajorIdA(userVoluntary.getMajorIdA());
+        this.setMajorIdB(userVoluntary.getMajorIdB());
+        this.setMajorIdC(userVoluntary.getMajorIdC());
+        this.setMajorIdD(userVoluntary.getMajorIdD());
+        this.setMajorIdE(userVoluntary.getMajorIdE());
+        this.setMajorIdF(userVoluntary.getMajorIdF());
+        this.setCount(userVoluntary.getCount());
 
+    }
     @Override
     public String toString() {
         return "UserVoluntary{" +
