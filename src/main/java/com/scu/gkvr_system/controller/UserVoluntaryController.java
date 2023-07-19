@@ -41,5 +41,13 @@ public class UserVoluntaryController {
         }
         return Result.fail(20001, message);
     }
+    @GetMapping("/getVoluntary")
+    public Result<Map<String,Object>> getVoluntary(@RequestParam String userId){
+        Map<String, Object> data = userVoluntaryService.getVoluntary(userId);
+        if (data != null) {
+            return Result.success("获取", data);
+        }
+        return Result.fail(20001, "获取失败");
+    }
 
 }
