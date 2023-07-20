@@ -8,7 +8,7 @@ import java.util.Collections;
 
 public class CodeGenerator {
     public static void main(String[] args) {
-        String url = "jdbc:mysql://@192.168.115.61:3306/gkvr_system";
+        String url = "jdbc:mysql://@localhost:3306/gkvr_system";
         String username = "root";
         String password = "123456";
         String moduleName = "gkvr_system";
