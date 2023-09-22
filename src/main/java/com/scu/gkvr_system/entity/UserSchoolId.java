@@ -1,6 +1,9 @@
 package com.scu.gkvr_system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+
 public class UserSchoolId {
+    @TableId
     String userId;
     String schoolId;
 

@@ -1,8 +1,11 @@
 package com.scu.gkvr_system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.util.List;
 
 public class SchoolDetail {
+    @TableId
     private SchoolInfo schoolInfo;
     private List<MajorScore> majorScoreList;
     private ScLiScoreNew scLiScoreNew;

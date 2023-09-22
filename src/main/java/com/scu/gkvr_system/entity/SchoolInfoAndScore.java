@@ -1,7 +1,9 @@
 package com.scu.gkvr_system.entity;
 
-public class SchoolInfoAndScore {
+import com.baomidou.mybatisplus.annotation.TableId;
 
+public class SchoolInfoAndScore {
+    @TableId
     private String id;
 
     private String belongs;

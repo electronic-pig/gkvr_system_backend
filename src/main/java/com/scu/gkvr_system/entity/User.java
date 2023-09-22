@@ -1,5 +1,7 @@
 package com.scu.gkvr_system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 
 /**
@@ -13,7 +15,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    @TableId
     private Integer id;
 
     private String username;
