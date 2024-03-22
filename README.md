@@ -1,6 +1,8 @@
 # 高考志愿推荐平台_后端
 ![GitHub](https://img.shields.io/github/license/electronic-pig/gkvr_system_backend)
 <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/electronic-pig/gkvr_system_backend">
+[![issues](https://img.shields.io/github/issues/electronic-pig/gkvr_system_backend?color=9cc)](https://github.com/electronic-pig/gkvr_system_backend/issues)
+![GitHub Repo stars](https://img.shields.io/github/stars/electronic-pig/gkvr_system_backend)
 ## 项目介绍
 一个前后端分离的高考志愿推荐系统(gaokao volunteer recommendation system)
 
