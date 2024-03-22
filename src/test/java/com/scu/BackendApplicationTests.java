@@ -14,12 +14,12 @@ import java.util.List;
 class BackendApplicationTests {
     @Resource
     private UserMapper userMapper;
+
     @Test
     void testMapper() {
         List<User> users = userMapper.selectList(null);
         users.forEach(System.out::println);
     }
-
 
 
 }

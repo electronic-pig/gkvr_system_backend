@@ -1,11 +1,11 @@
 server:
-    port: 9999
+    port: 8080
 
 spring:
   datasource:
-    username: sqlserver
-    password: LY280018ly!!!
-    url: jdbc:mysql://sqlserver.mysql.database.azure.com:3306/gkvr_system
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/gkvr_system
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging:
