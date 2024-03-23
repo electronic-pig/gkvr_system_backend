@@ -24,30 +24,30 @@ public class UserVoluntaryController {
     @Autowired
     private UserVoluntaryService userVoluntaryService;
 
-//    @PostMapping("/addVoluntary")
-//    public Result<Map<String, Object>> addVoluntary(@RequestBody UserVoluntary userVoluntary) {
-//        String message = userVoluntaryService.addVoluntary(userVoluntary);
-//        if (message.equals("添加成功！")) {
-//            return Result.success("添加成功！");
-//        }
-//        return Result.fail(201, message);
-//    }
+    @PostMapping("/addVoluntary")
+    public Result<Map<String, Object>> addVoluntary(@RequestBody UserVoluntary userVoluntary) {
+        String message = userVoluntaryService.addVoluntary(userVoluntary);
+        if (message.equals("添加成功！")) {
+            return Result.success("添加成功！");
+        }
+        return Result.fail(201, message);
+    }
 
-//    @PostMapping("/deleteVoluntary")
-//    public Result<Map<String, Object>> deleteVoluntary(@RequestBody UserSchoolId userSchoolId) {
-//        String message = userVoluntaryService.deleteVoluntary(userSchoolId.getUserId(), userSchoolId.getSchoolId());
-//        if (message.equals("删除成功！")) {
-//            return Result.success("删除成功！");
-//        }
-//        return Result.fail(201, message);
-//    }
+    @PostMapping("/deleteVoluntary")
+    public Result<Map<String, Object>> deleteVoluntary(@RequestBody UserVoluntary userVoluntary) {
+        String message = userVoluntaryService.deleteVoluntary(userVoluntary);
+        if (message.equals("删除成功！")) {
+            return Result.success("删除成功！");
+        }
+        return Result.fail(201, message);
+    }
 
-//    @GetMapping("/getVoluntary")
-//    public Result<Map<String, Object>> getVoluntary(@RequestParam String userId) {
-//        Map<String, Object> data = userVoluntaryService.getVoluntary(userId);
-//        if (data != null) {
-//            return Result.success("获取成功", data);
-//        }
-//        return Result.fail(201, "获取失败");
-//    }
+    @GetMapping("/getVoluntary")
+    public Result<Map<String, Object>> getVoluntary(@RequestParam int userId) {
+        Map<String, Object> data = userVoluntaryService.getVoluntary(userId);
+        if (data != null) {
+            return Result.success("获取成功", data);
+        }
+        return Result.fail(201, "获取失败");
+    }
 }
