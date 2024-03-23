@@ -26,5 +26,4 @@ public interface SchoolInfoService extends IService<SchoolInfo> {
 
     Map<String, Object> getDoubleHighSchools();
 
-    Map<String, Object> getSchoolDetail(int schoolId);
 }

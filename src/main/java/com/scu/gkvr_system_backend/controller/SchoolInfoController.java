@@ -86,12 +86,4 @@ public class SchoolInfoController {
         return Result.fail(201, "数据为空");
     }
 
-    @GetMapping("/schoolDetail")
-    public Result<Map<String, Object>> getSchoolDetail(@RequestParam int schoolId) {
-        Map<String, Object> data = schoolInfoService.getSchoolDetail(schoolId);
-        if (data != null) {
-            return Result.success("查询成功", data);
-        }
-        return Result.fail(201, "数据为空");
-    }
 }

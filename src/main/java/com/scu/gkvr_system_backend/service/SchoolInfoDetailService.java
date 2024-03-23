@@ -3,6 +3,8 @@ package com.scu.gkvr_system_backend.service;
 import com.scu.gkvr_system_backend.pojo.SchoolInfoDetail;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Map;
+
 /**
 * @author Liyang
 * @description 针对表【school_info_detail】的数据库操作Service
@@ -10,4 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface SchoolInfoDetailService extends IService<SchoolInfoDetail> {
 
+    Map<String, Object> getSchoolDetail(int schoolId);
 }

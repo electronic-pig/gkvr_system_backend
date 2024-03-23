@@ -29,11 +29,7 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 
     private List<SchoolInfo> schools;  // 学校列表
 
-    @Autowired
-    private ScLiScoreMapper scLiScoreMapper;
 
-    @Autowired
-    private MajorScoreMapper majorScoreMapper;
 
     private Map<String, Object> computePage(int page) {
         int startIndex = (page - 1) * 10;  // 计算起始索引
@@ -130,26 +126,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         return result;
     }
 
-    @Override
-    public Map<String, Object> getSchoolDetail(int schoolId) {
-        LambdaQueryWrapper<SchoolInfo> wrapper1 = new LambdaQueryWrapper<>();
-        wrapper1.eq(SchoolInfo::getSchoolId, schoolId);
-        SchoolInfo schoolInfo = this.baseMapper.selectOne(wrapper1);
-
-        LambdaQueryWrapper<ScLiScore> wrapper2 = new LambdaQueryWrapper<>();
-        wrapper2.eq(ScLiScore::getSchoolId, schoolId);
-        ScLiScore scLiScore = this.scLiScoreMapper.selectOne(wrapper2);
-
-        LambdaQueryWrapper<MajorScore> wrapper3 = new LambdaQueryWrapper<>();
-        wrapper3.eq(MajorScore::getSchoolId, schoolId);
-        List<MajorScore> majorScore = this.majorScoreMapper.selectList(wrapper3);
-
-        Map<String, Object> result = new HashMap<>();
-        result.put("school", schoolInfo);
-        result.put("scLiScore", scLiScore);
-        result.put("majorScore", majorScore);
-        return result;
-    }
 }
 
 
