@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scu.gkvr_system_backend.mapper.SchoolInfoDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.SchoolInfoDetail">
+            <id property="schoolId" column="school_id" jdbcType="INTEGER"/>
+            <result property="schoolName" column="school_name" jdbcType="VARCHAR"/>
+            <result property="numSubject" column="num_subject" jdbcType="INTEGER"/>
+            <result property="numMaster" column="num_master" jdbcType="INTEGER"/>
+            <result property="numDoctor" column="num_doctor" jdbcType="INTEGER"/>
+            <result property="numAcademician" column="num_academician" jdbcType="INTEGER"/>
+            <result property="createDate" column="create_date" jdbcType="INTEGER"/>
+            <result property="area" column="area" jdbcType="VARCHAR"/>
+            <result property="ruankeRank" column="ruanke_rank" jdbcType="INTEGER"/>
+            <result property="xyhRank" column="xyh_rank" jdbcType="INTEGER"/>
+            <result property="usRank" column="us_rank" jdbcType="INTEGER"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="phone" column="phone" jdbcType="VARCHAR"/>
+            <result property="schoolSite" column="school_site" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="job" column="job" jdbcType="VARCHAR"/>
+            <result property="postgraduate" column="postgraduate" jdbcType="VARCHAR"/>
+            <result property="abroad" column="abroad" jdbcType="VARCHAR"/>
+            <result property="menRate" column="men_rate" jdbcType="VARCHAR"/>
+            <result property="femaleRate" column="female_rate" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        school_id,school_name,num_subject,
+        num_master,num_doctor,num_academician,
+        create_date,area,ruanke_rank,
+        xyh_rank,us_rank,email,
+        phone,school_site,content,
+        job,postgraduate,abroad,
+        men_rate,female_rate
+    </sql>
+</mapper>

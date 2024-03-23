@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scu.gkvr_system_backend.mapper.MajorScoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.MajorScore">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="schoolId" column="school_id" jdbcType="INTEGER"/>
+            <result property="speId" column="spe_id" jdbcType="INTEGER"/>
+            <result property="spname" column="spname" jdbcType="VARCHAR"/>
+            <result property="max" column="max" jdbcType="VARCHAR"/>
+            <result property="min" column="min" jdbcType="VARCHAR"/>
+            <result property="average" column="average" jdbcType="VARCHAR"/>
+            <result property="minSection" column="min_section" jdbcType="VARCHAR"/>
+            <result property="provinceId" column="province_id" jdbcType="VARCHAR"/>
+            <result property="benk" column="benk" jdbcType="VARCHAR"/>
+            <result property="level1" column="level1" jdbcType="VARCHAR"/>
+            <result property="level2" column="level2" jdbcType="VARCHAR"/>
+            <result property="level3" column="level3" jdbcType="VARCHAR"/>
+            <result property="batch" column="batch" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,school_id,spe_id,
+        spname,max,min,
+        average,min_section,province_id,
+        benk,level1,level2,
+        level3,batch
+    </sql>
+</mapper>

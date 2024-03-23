@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scu.gkvr_system_backend.mapper.UserVoluntaryMapper">
+
+    <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.UserVoluntary">
+            <id property="userId" column="user_id" jdbcType="INTEGER"/>
+            <id property="schoolId" column="school_id" jdbcType="VARCHAR"/>
+            <result property="majorIdA" column="major_id_a" jdbcType="VARCHAR"/>
+            <result property="majorIdB" column="major_id_b" jdbcType="VARCHAR"/>
+            <result property="majorIdC" column="major_id_c" jdbcType="VARCHAR"/>
+            <result property="majorIdD" column="major_id_d" jdbcType="VARCHAR"/>
+            <result property="majorIdE" column="major_id_e" jdbcType="VARCHAR"/>
+            <result property="majorIdF" column="major_id_f" jdbcType="VARCHAR"/>
+            <result property="count" column="count" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        user_id,school_id,major_id_a,
+        major_id_b,major_id_c,major_id_d,
+        major_id_e,major_id_f,count
+    </sql>
+</mapper>
