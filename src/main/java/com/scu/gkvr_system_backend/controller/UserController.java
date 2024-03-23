@@ -1,11 +1,11 @@
-package com.scu.gkvr_system.controller;
+package com.scu.gkvr_system_backend.controller;
 
-import com.scu.common.vo.Result;
-import com.scu.gkvr_system.entity.User;
-import com.scu.gkvr_system.service.IUserService;
+import com.scu.gkvr_system_backend.pojo.User;
+import com.scu.gkvr_system_backend.service.UserService;
+import com.scu.gkvr_system_backend.utils.Result;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -20,8 +20,9 @@ import java.util.Map;
 @RequestMapping("/user")
 @CrossOrigin
 public class UserController {
-    @Resource
-    private IUserService userService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/login")
     public Result<Map<String, Object>> login(@RequestBody User user) {
@@ -29,14 +30,14 @@ public class UserController {
         if (data != null) {
             return Result.success("登录成功", data);
         }
-        return Result.fail(20001, "用户名或密码错误");
+        return Result.fail(201, "用户名或密码错误");
     }
 
     @PostMapping("/register")
-    public Result register(@RequestBody User user) {
+    public Result<Map<String, Object>> register(@RequestBody User user) {
         Boolean result = userService.register(user);
         if (!result) {
-            return Result.fail("用户已存在");
+            return Result.fail(201, "用户已存在");
         }
         return Result.success("注册成功");
     }
