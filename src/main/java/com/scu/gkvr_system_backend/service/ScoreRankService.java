@@ -3,6 +3,8 @@ package com.scu.gkvr_system_backend.service;
 import com.scu.gkvr_system_backend.pojo.ScoreRank;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Map;
+
 /**
 * @author Liyang
 * @description 针对表【score_rank】的数据库操作Service
@@ -10,4 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface ScoreRankService extends IService<ScoreRank> {
 
+    Map<String, Object> getReco(int page, String provinceName, String is985, String is211, String isDoublehigh, String isRisk, String isStable, String isEasy, String score);
 }

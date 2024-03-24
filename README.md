@@ -5,7 +5,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/electronic-pig/gkvr_system_backend)
 
 ## 最新动态
-- [2024/3/23] 🔥 对后端代码进行重构，对数据库进行了优化
+- [2024/3/23] 🔥 对后端代码进行重构，对数据库进行了优化，目前正在更新中，旧版本代码请查看tag v1.0.0
 ## 项目介绍
 一个前后端分离的高考志愿推荐系统(gaokao volunteer recommendation system)
 
@@ -26,8 +26,6 @@
 ⚠️ 本项目的数据信息爬取自[掌上高考](https://www.gaokao.cn/)，项目成员对数据真实性不做任何保证，且项目存在数据紊乱和错误的情况，一切以学校官网为准
 
 ⚠️ 本项目部署在小型云服务器上，服务器承载能力有限，可能会出现网址访问失败的情况
-
-⚠️ 本项目已完成所有开发需求，项目成员不会对本项目进行更新和维护
 
 ## 项目参与者
 <a href="https://github.com/electronic-pig/gkvr_system_backend/graphs/contributors">

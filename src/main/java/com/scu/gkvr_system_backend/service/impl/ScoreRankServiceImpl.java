@@ -6,6 +6,8 @@ import com.scu.gkvr_system_backend.service.ScoreRankService;
 import com.scu.gkvr_system_backend.mapper.ScoreRankMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 /**
 * @author Liyang
 * @description 针对表【score_rank】的数据库操作Service实现
@@ -15,6 +17,10 @@ import org.springframework.stereotype.Service;
 public class ScoreRankServiceImpl extends ServiceImpl<ScoreRankMapper, ScoreRank>
     implements ScoreRankService{
 
+    @Override
+    public Map<String, Object> getReco(int page, String provinceName, String is985, String is211, String isDoublehigh, String isRisk, String isStable, String isEasy, String score) {
+        return null;
+    }
 }
 
 
