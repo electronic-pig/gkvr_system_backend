@@ -12,18 +12,16 @@ import java.util.Map;
 */
 public interface SchoolInfoService extends IService<SchoolInfo> {
 
-    void getAllSchool();
+    Map<String, Object> getAllSchools(int page);
+    Map<String, Object> get985Schools(int page);
 
-    Map<String, Object> getSchoolsByPage(int page);
+    Map<String, Object> get211Schools(int page);
+
+    Map<String, Object> getDoublehighSchools(int page);
 
     Map<String, Object> searchSchools(int page, String province_name, String is985, String is211, String doublehigh);
 
-    Map<String, Object> SearchByName(String schoolName);
+    Map<String, Object> SearchByName(String schoolName, int page);
 
-    Map<String, Object> get985Schools();
-
-    Map<String, Object> get211Schools();
-
-    Map<String, Object> getDoubleHighSchools();
 
 }
