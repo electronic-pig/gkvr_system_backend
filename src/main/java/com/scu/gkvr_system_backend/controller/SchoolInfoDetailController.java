@@ -19,6 +19,7 @@ import java.util.Map;
 @RequestMapping("/schoolInfoDetail")
 @CrossOrigin
 public class SchoolInfoDetailController {
+
     @Autowired
     SchoolInfoDetailService schoolInfoDetailService;
 

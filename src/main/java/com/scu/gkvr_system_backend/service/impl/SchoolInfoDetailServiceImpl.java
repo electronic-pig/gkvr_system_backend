@@ -36,7 +36,6 @@ public class SchoolInfoDetailServiceImpl extends ServiceImpl<SchoolInfoDetailMap
     @Autowired
     private SchoolInfoMapper schoolInfoMapper;
 
-
     @Override
     public Map<String, Object> getSchoolDetail(int schoolId) {
         LambdaQueryWrapper<SchoolInfoDetail> wrapper1 = new LambdaQueryWrapper<>();
@@ -53,7 +52,7 @@ public class SchoolInfoDetailServiceImpl extends ServiceImpl<SchoolInfoDetailMap
 
         LambdaQueryWrapper<SchoolInfo> wrapper4 = new LambdaQueryWrapper<>();
         wrapper4.eq(SchoolInfo::getSchoolId, schoolId);
-        List<SchoolInfo> schoolInfo = this.schoolInfoMapper.selectList(wrapper4);
+        SchoolInfo schoolInfo = this.schoolInfoMapper.selectOne(wrapper4);
 
         Map<String, Object> result = new HashMap<>();
         result.put("schoolInfoDetail", schoolInfoDetail);
