@@ -69,6 +69,15 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
     }
 
     @Override
+    public Map<String, Object> SearchByName(int page, String schoolName) {
+        // 根据学校名称查询学校分数信息
+        LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.like(SchoolInfo::getSchoolName, schoolName);
+        schools = this.baseMapper.selectList(wrapper);
+        return computePage(page);
+    }
+
+    @Override
     public Map<String, Object> searchSchools(int page, String province_name, String is985, String is211, String doublehigh) {
         // 创建 LambdaQueryWrapper 对象
         LambdaQueryWrapper<SchoolInfo> queryWrapper = new LambdaQueryWrapper<>();
@@ -81,15 +90,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         return computePage(page);
     }
 
-
-    @Override
-    public Map<String, Object> SearchByName(String schoolName, int page) {
-        // 根据学校名称查询学校分数信息
-        LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
-        wrapper.like(SchoolInfo::getSchoolName, schoolName);
-        schools = this.baseMapper.selectList(wrapper);
-        return computePage(page);
-    }
 
 
 }

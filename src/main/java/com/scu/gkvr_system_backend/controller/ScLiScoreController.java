@@ -24,8 +24,8 @@ public class ScLiScoreController {
     private ScLiScoreService scLiScoreService;
 
     @GetMapping("/school")
-    public Result<Map<String, Object>> scoreSearchByName(@RequestParam String schoolName) {
-        Map<String, Object> data = scLiScoreService.scoreSearchByName(schoolName);
+    public Result<Map<String, Object>> searchByName(@RequestParam String schoolName) {
+        Map<String, Object> data = scLiScoreService.searchByName(schoolName);
         if (data != null) {
             return Result.success("查询成功", data);
         }

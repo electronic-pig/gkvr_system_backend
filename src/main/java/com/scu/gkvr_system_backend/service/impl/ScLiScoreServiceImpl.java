@@ -21,7 +21,7 @@ public class ScLiScoreServiceImpl extends ServiceImpl<ScLiScoreMapper, ScLiScore
         implements ScLiScoreService {
 
     @Override
-    public Map<String, Object> scoreSearchByName(String schoolName) {
+    public Map<String, Object> searchByName(String schoolName) {
         // 根据学校名称查询学校分数信息
         LambdaQueryWrapper<ScLiScore> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(ScLiScore::getSchoolName, schoolName);

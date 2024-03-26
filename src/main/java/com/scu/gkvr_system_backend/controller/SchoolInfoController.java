@@ -59,6 +59,16 @@ public class SchoolInfoController {
         return Result.fail(201, "数据为空");
     }
 
+    @GetMapping("/searchByName")
+    //样例：http://localhost:8080/schoolInfo/searchByName?schoolName=交通大学
+    public Result<Map<String, Object>> searchByName(@RequestParam int page, @RequestParam String schoolName) {
+        Map<String, Object> data = schoolInfoService.SearchByName(page, schoolName);
+        if (data != null) {
+            return Result.success("查询成功", data);
+        }
+        return Result.fail(201, "查询失败");
+    }
+
     @GetMapping("/search")
     //样例：http://localhost:8080/schoolInfo/search?page=1&province_name=四川&is985=&is211=&doublehigh=
     public Result<Map<String, Object>> searchSchools(@RequestParam int page,
@@ -71,16 +81,6 @@ public class SchoolInfoController {
             return Result.success("学校信息查询成功", data);
         }
         return Result.fail(201, "数据为空");
-    }
-
-    @GetMapping("/searchByName")
-    //样例：http://localhost:8080/schoolInfo/searchByName?schoolName=交通大学
-    public Result<Map<String, Object>> scoreSearchByName(@RequestParam String schoolName, @RequestParam int page) {
-        Map<String, Object> data = schoolInfoService.SearchByName(schoolName, page);
-        if (data != null) {
-            return Result.success("查询成功", data);
-        }
-        return Result.fail(201, "查询失败");
     }
 
 

@@ -12,5 +12,5 @@ import java.util.Map;
 */
 public interface ScLiScoreService extends IService<ScLiScore> {
 
-    Map<String, Object> scoreSearchByName(String schoolName);
+    Map<String, Object> searchByName(String schoolName);
 }

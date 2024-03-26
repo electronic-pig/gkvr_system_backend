@@ -23,9 +23,9 @@ public class MajorInfoController {
     @Autowired
     private MajorInfoService majorInfoService;
 
-    @GetMapping
-    public Result<Map<String, Object>> getMajorsByPage(@RequestParam int page, @RequestParam String type) {
-        Map<String, Object> data = majorInfoService.getMajorsByPage(page, type);
+    @GetMapping("/getSortedMajors")
+    public Result<Map<String, Object>> getSortedMajors(@RequestParam int page, @RequestParam String type) {
+        Map<String, Object> data = majorInfoService.getSortedMajors(page, type);
         if (data != null) {
             return Result.success("专业信息查询成功", data);
         }
@@ -34,8 +34,8 @@ public class MajorInfoController {
 
     @GetMapping("/searchByName")
     //样例：http://localhost:8080/majorInfo/searchByName?majorName=医
-    public Result<Map<String, Object>> majorSearchByName(@RequestParam String majorName) {
-        Map<String, Object> data = majorInfoService.SearchByName(majorName);
+    public Result<Map<String, Object>> majorSearchByName(@RequestParam int page, @RequestParam String majorName) {
+        Map<String, Object> data = majorInfoService.SearchByName(page, majorName);
         if (data != null) {
             return Result.success("查询成功", data);
         }

@@ -19,9 +19,7 @@ public interface SchoolInfoService extends IService<SchoolInfo> {
 
     Map<String, Object> getDoublehighSchools(int page);
 
+    Map<String, Object> SearchByName(int page,String schoolName);
+
     Map<String, Object> searchSchools(int page, String province_name, String is985, String is211, String doublehigh);
-
-    Map<String, Object> SearchByName(String schoolName, int page);
-
-
 }
