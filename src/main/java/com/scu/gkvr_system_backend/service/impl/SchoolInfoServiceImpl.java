@@ -2,6 +2,7 @@ package com.scu.gkvr_system_backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.scu.gkvr_system_backend.mapper.SchoolInfoMapper;
 import com.scu.gkvr_system_backend.pojo.SchoolInfo;
@@ -23,6 +24,7 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         implements SchoolInfoService {
 
     private List<SchoolInfo> schools = new ArrayList<>();  // 学校列表
+    private final Map<String, Object> result = new HashMap<>();  // 结果集
 
     private Map<String, Object> computePage(int page) {
         int startIndex = (page - 1) * 10;  // 计算起始索引
@@ -39,9 +41,10 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
 
     @Override
     public Map<String, Object> getAllSchools(int page) {
-        LambdaQueryWrapper<SchoolInfo> wrapper = new LambdaQueryWrapper<>();
-        schools = this.baseMapper.selectList(wrapper);
-        return computePage(page);
+        Page<SchoolInfo> schoolInfoPage = baseMapper.selectPage(new Page<>(page, 10), null);
+        result.put("schools", schoolInfoPage.getRecords());
+        result.put("total", schoolInfoPage.getTotal());
+        return result;
     }
 
     @Override
@@ -89,7 +92,6 @@ public class SchoolInfoServiceImpl extends ServiceImpl<SchoolInfoMapper, SchoolI
         schools = this.baseMapper.selectList(queryWrapper);
         return computePage(page);
     }
-
 
 
 }
