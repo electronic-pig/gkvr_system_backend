@@ -12,5 +12,5 @@ import java.util.Map;
 */
 public interface ScoreRankService extends IService<ScoreRank> {
 
-    Map<String, Object> getReco(int page, String provinceName, String is985, String is211, String isDoublehigh, String isRisk, String isStable, String isEasy, String score);
+    Map<String, Object> getRank(String score);
 }

@@ -37,6 +37,7 @@ public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo
     @Override
     public Map<String, Object> SearchByName(int page, String majorName) {
         LambdaQueryWrapper<MajorInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.like(MajorInfo::getMajorName, majorName);
         Page<MajorInfo> majorInfoPage = baseMapper.selectPage(new Page<>(page, 10), wrapper);
         result.put("majors", majorInfoPage.getRecords());
         result.put("total", majorInfoPage.getTotal());
