@@ -2,6 +2,8 @@ package com.scu.gkvr_system_backend.pojo;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
 import java.io.Serializable;
 import lombok.Data;
 
@@ -30,5 +32,6 @@ public class ScLiScore implements Serializable {
 
     private String rank2020;
 
+    @Serial
     private static final long serialVersionUID = 1L;
 }
