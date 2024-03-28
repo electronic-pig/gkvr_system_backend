@@ -24,8 +24,19 @@ public class ScoreRankController {
     private ScoreRankService scoreRankService;
 
     @GetMapping("/getRank")
-    public Result<Map<String, Object>> getRank(@RequestParam String score) {
+    public Result<Map<String, Object>> getRank(@RequestParam int score) {
         Map<String, Object> data = scoreRankService.getRank(score);
+        if (data != null) {
+            return Result.success("获取成功", data);
+        }
+        return Result.fail(201, "获取失败");
+    }
+
+    @GetMapping("/getReco")
+    public Result<Map<String, Object>> getReco(@RequestParam int page, @RequestParam int score,
+                                               @RequestParam String risk, @RequestParam String provinceName,
+                                               @RequestParam String schoolClass) {
+        Map<String, Object> data = scoreRankService.getReco(page, score, risk, provinceName, schoolClass);
         if (data != null) {
             return Result.success("获取成功", data);
         }
