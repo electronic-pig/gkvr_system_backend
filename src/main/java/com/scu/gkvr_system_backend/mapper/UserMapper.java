@@ -11,8 +11,7 @@ import org.apache.ibatis.annotations.Select;
 * @Entity com.scu.gkvr_system_backend.pojo.User
 */
 public interface UserMapper extends BaseMapper<User> {
-    @Select("SELECT COUNT(*) FROM user")
-    int countUsers();
+
 }
 
 

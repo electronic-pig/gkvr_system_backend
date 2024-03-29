@@ -1,37 +1,37 @@
 package com.scu.gkvr_system_backend.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
-import lombok.Data;
 
 /**
  * @TableName user_voluntary
  */
-@TableName(value ="user_voluntary")
+@TableName(value = "user_voluntary")
 @Data
 public class UserVoluntary implements Serializable {
-    @TableId
-    private Integer userId;
-    private String schoolId;
+    @TableId(type = IdType.AUTO)
+    private Integer id;
 
-    private String majorIdA;
+    private String userName;
 
-    private String majorIdB;
+    private String schoolName;
 
-    private String majorIdC;
+    private String majorA;
 
-    private String majorIdD;
+    private String majorB;
 
-    private String majorIdE;
+    private String majorC;
 
-    private String majorIdF;
+    private String majorD;
 
-    private Integer count;
+    private String majorE;
+
+    private String majorF;
 
     @Serial
     private static final long serialVersionUID = 1L;

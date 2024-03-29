@@ -36,9 +36,9 @@ public class UserController {
     @PostMapping("/register")
     public Result<Map<String, Object>> register(@RequestBody User user) {
         Boolean result = userService.register(user);
-        if (!result) {
-            return Result.fail(201, "用户已存在");
+        if (result) {
+            return Result.success("注册成功");
         }
-        return Result.success("注册成功");
+        return Result.fail(201, "用户已存在");
     }
 }

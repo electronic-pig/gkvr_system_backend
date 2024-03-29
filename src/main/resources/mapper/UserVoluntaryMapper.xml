@@ -5,20 +5,20 @@
 <mapper namespace="com.scu.gkvr_system_backend.mapper.UserVoluntaryMapper">
 
     <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.UserVoluntary">
-            <id property="userId" column="user_id" jdbcType="INTEGER"/>
-            <id property="schoolId" column="school_id" jdbcType="VARCHAR"/>
-            <result property="majorIdA" column="major_id_a" jdbcType="VARCHAR"/>
-            <result property="majorIdB" column="major_id_b" jdbcType="VARCHAR"/>
-            <result property="majorIdC" column="major_id_c" jdbcType="VARCHAR"/>
-            <result property="majorIdD" column="major_id_d" jdbcType="VARCHAR"/>
-            <result property="majorIdE" column="major_id_e" jdbcType="VARCHAR"/>
-            <result property="majorIdF" column="major_id_f" jdbcType="VARCHAR"/>
-            <result property="count" column="count" jdbcType="INTEGER"/>
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="schoolName" column="school_name" jdbcType="VARCHAR"/>
+            <result property="majorA" column="major_a" jdbcType="VARCHAR"/>
+            <result property="majorB" column="major_b" jdbcType="VARCHAR"/>
+            <result property="majorC" column="major_c" jdbcType="VARCHAR"/>
+            <result property="majorD" column="major_d" jdbcType="VARCHAR"/>
+            <result property="majorE" column="major_e" jdbcType="VARCHAR"/>
+            <result property="majorF" column="major_f" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        user_id,school_id,major_id_a,
-        major_id_b,major_id_c,major_id_d,
-        major_id_e,major_id_f,count
+        id,user_name,school_name,
+        major_a,major_b,major_c,
+        major_d,major_e,major_f
     </sql>
 </mapper>

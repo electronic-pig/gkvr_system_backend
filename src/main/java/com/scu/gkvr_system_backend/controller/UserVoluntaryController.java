@@ -24,30 +24,31 @@ public class UserVoluntaryController {
     @Autowired
     private UserVoluntaryService userVoluntaryService;
 
-    @PostMapping("/addVoluntary")
-    public Result<Map<String, Object>> addVoluntary(@RequestBody UserVoluntary userVoluntary) {
-        String message = userVoluntaryService.addVoluntary(userVoluntary);
-        if (message.equals("添加成功！")) {
-            return Result.success("添加成功！");
-        }
-        return Result.fail(201, message);
-    }
-
-    @PostMapping("/deleteVoluntary")
-    public Result<Map<String, Object>> deleteVoluntary(@RequestBody UserVoluntary userVoluntary) {
-        String message = userVoluntaryService.deleteVoluntary(userVoluntary);
-        if (message.equals("删除成功！")) {
-            return Result.success("删除成功！");
-        }
-        return Result.fail(201, message);
-    }
-
     @GetMapping("/getVoluntary")
-    public Result<Map<String, Object>> getVoluntary(@RequestParam int userId) {
-        Map<String, Object> data = userVoluntaryService.getVoluntary(userId);
+    public Result<Map<String, Object>> getVoluntary(@RequestParam String user_name) {
+        Map<String, Object> data = userVoluntaryService.getVoluntary(user_name);
         if (data != null) {
             return Result.success("获取成功", data);
         }
         return Result.fail(201, "获取失败");
     }
+
+    @PostMapping("/addVoluntary")
+    public Result<Map<String, Object>> addVoluntary(@RequestBody UserVoluntary userVoluntary) {
+        Boolean result = userVoluntaryService.addVoluntary(userVoluntary);
+        if (result) {
+            return Result.success("添加成功");
+        }
+        return Result.fail(201, "添加失败");
+    }
+
+    @PostMapping("/deleteVoluntary")
+    public Result<Map<String, Object>> deleteVoluntary(@RequestBody UserVoluntary userVoluntary) {
+        Boolean result = userVoluntaryService.deleteVoluntary(userVoluntary);
+        if (result) {
+            return Result.success("删除成功");
+        }
+        return Result.fail(201, "删除失败");
+    }
+
 }

@@ -14,47 +14,43 @@ import java.util.Map;
 /**
  * @author Liyang
  * @description 针对表【user_voluntary】的数据库操作Service实现
- * @createDate 2024-03-23 16:46:11
+ * @createDate 2024-03-29 17:07:15
  */
 @Service
 public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, UserVoluntary>
         implements UserVoluntaryService {
-
     @Override
-    public String addVoluntary(UserVoluntary userVoluntary) {
-        if (userVoluntary.getUserId() != null && userVoluntary.getSchoolId() != null) {
-            LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(UserVoluntary::getUserId, userVoluntary.getUserId());
-            queryWrapper.eq(UserVoluntary::getSchoolId, userVoluntary.getSchoolId());
-            UserVoluntary userVoluntaryResult = this.baseMapper.selectOne(queryWrapper);
-            if (userVoluntaryResult == null) {
-                this.baseMapper.insert(userVoluntary);
-                return "添加成功！";
-            }
-        }
-        return "添加失败";
-    }
-
-    @Override
-    public Map<String, Object> getVoluntary(int userId) {
-        LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(UserVoluntary::getUserId, userId);
-        List<UserVoluntary> userVoluntaryList = this.baseMapper.selectList(queryWrapper);
-        if (userVoluntaryList.isEmpty()) {
-            return null;
-        }
-        HashMap<String, Object> data = new HashMap<>();
+    public Map<String, Object> getVoluntary(String user_name) {
+        LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserVoluntary::getUserName, user_name);
+        List<UserVoluntary> userVoluntaryList = baseMapper.selectList(wrapper);
+        Map<String, Object> data = new HashMap<>();
         data.put("userVoluntary", userVoluntaryList);
         return data;
     }
 
     @Override
-    public String deleteVoluntary(UserVoluntary userVoluntary) {
-        LambdaQueryWrapper<UserVoluntary> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(UserVoluntary::getUserId, userVoluntary.getUserId());
-        queryWrapper.eq(UserVoluntary::getSchoolId, userVoluntary.getSchoolId());
-        this.baseMapper.delete(queryWrapper);
-        return "删除成功";
+    public Boolean addVoluntary(UserVoluntary userVoluntary) {
+        LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserVoluntary::getUserName, userVoluntary.getUserName());
+        wrapper.eq(UserVoluntary::getSchoolName, userVoluntary.getSchoolName());
+        UserVoluntary userVoluntaryResult = this.baseMapper.selectOne(wrapper);
+        if (userVoluntaryResult != null) {
+            int rowsAffected = this.baseMapper.update(userVoluntary, wrapper);
+            return rowsAffected > 0;
+        } else {
+            int rowsAffected = this.baseMapper.insert(userVoluntary);
+            return rowsAffected > 0;
+        }
+    }
+
+    @Override
+    public Boolean deleteVoluntary(UserVoluntary userVoluntary) {
+        LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserVoluntary::getUserName, userVoluntary.getUserName());
+        wrapper.eq(UserVoluntary::getSchoolName, userVoluntary.getSchoolName());
+        int rowsAffected = this.baseMapper.delete(wrapper);
+        return rowsAffected > 0;
     }
 }
 
