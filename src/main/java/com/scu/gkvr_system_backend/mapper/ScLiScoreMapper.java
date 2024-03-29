@@ -15,7 +15,8 @@ import java.util.List;
 public interface ScLiScoreMapper extends BaseMapper<ScLiScore> {
 
     @Select("select * from sc_li_score where #{upperRank} <= ((rank2020 + rank2021 + rank2022) / 3) " +
-            "and ((rank2020 + rank2021 + rank2022) / 3) <= #{lowerRank}")
+            "and ((rank2020 + rank2021 + rank2022) / 3) <= #{lowerRank} " +
+            "order by ((rank2020 + rank2021 + rank2022) / 3) desc")
     List<ScLiScore> selectRank(int upperRank, int lowerRank);
 }
 

@@ -39,7 +39,7 @@ public class ScoreRankServiceImpl extends ServiceImpl<ScoreRankMapper, ScoreRank
     }
 
     @Override
-    public Map<String, Object> getReco(int page, int score, String risk, String provinceName, String schoolClass) {
+    public Map<String, Object> getReco(int page, int score, String risk) {
         LambdaQueryWrapper<ScoreRank> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(ScoreRank::getScore, score);
         ScoreRank scoreRank = baseMapper.selectOne(wrapper);
@@ -63,20 +63,25 @@ public class ScoreRankServiceImpl extends ServiceImpl<ScoreRankMapper, ScoreRank
             default:
                 break;
         }
-        List<ScLiScore> list = scLiScoreMapper.selectRank(UpperRank, LowerRank);
+        List<ScLiScore> schools = scLiScoreMapper.selectRank(UpperRank, LowerRank);
+        int total = schools.size();
+        int startIndex = (page - 1) * 10;  // 计算起始索引
+        int endIndex = Math.min(startIndex + 10, schools.size());  // 计算结束索引（最多10个学校）
+        schools = schools.subList(startIndex, endIndex);
         List<Integer> averageScores = new ArrayList<>();//平均分作为预测投档线
         List<Integer> upLineRateList = new ArrayList<>();
-        for (ScLiScore scLiScore : list) {
+        for (ScLiScore scLiScore : schools) {
             double averageScore = (scLiScore.getScore2020() + scLiScore.getScore2021() + scLiScore.getScore2022()) / 3.0;
             double rankRate = ((scLiScore.getRank2020() + scLiScore.getRank2021() + scLiScore.getRank2022()) / 3.0) / rank;
             int UpLineRate = (int) (rankRate * 50) >= 100 ? 99: (int) (rankRate * 50);
             upLineRateList.add(UpLineRate);
             averageScores.add((int) averageScore);
         }
+        result.put("total", total);
+        result.put("scoreRank", scoreRank);
         result.put("upLineRateList",upLineRateList);
         result.put("averageScores", averageScores);
-        result.put("scoreRank", scoreRank);
-        result.put("list", list);
+        result.put("schools", schools);
         return result;
     }
 }

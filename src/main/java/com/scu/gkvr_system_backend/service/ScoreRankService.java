@@ -14,5 +14,5 @@ public interface ScoreRankService extends IService<ScoreRank> {
 
     Map<String, Object> getRank(int score);
 
-    Map<String, Object> getReco(int page, int score, String risk, String provinceName, String schoolClass);
+    Map<String, Object> getReco(int page, int score, String risk);
 }

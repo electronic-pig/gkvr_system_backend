@@ -34,9 +34,8 @@ public class ScoreRankController {
 
     @GetMapping("/getReco")
     public Result<Map<String, Object>> getReco(@RequestParam int page, @RequestParam int score,
-                                               @RequestParam String risk, @RequestParam String provinceName,
-                                               @RequestParam String schoolClass) {
-        Map<String, Object> data = scoreRankService.getReco(page, score, risk, provinceName, schoolClass);
+                                               @RequestParam String risk) {
+        Map<String, Object> data = scoreRankService.getReco(page, score, risk);
         if (data != null) {
             return Result.success("获取成功", data);
         }

@@ -27,9 +27,9 @@ public class SchoolInfoController {
     public Result<Map<String, Object>> getAllSchools(@RequestParam int page) {
         Map<String, Object> data = schoolInfoService.getAllSchools(page);
         if (data != null) {
-            return Result.success("学校信息查询成功", data);
+            return Result.success("查询成功", data);
         }
-        return Result.fail(201, "数据为空");
+        return Result.fail(201, "查询失败");
     }
 
     @GetMapping("/985")
@@ -38,7 +38,7 @@ public class SchoolInfoController {
         if (data != null) {
             return Result.success("985类学校信息查询成功", data);
         }
-        return Result.fail(201, "数据为空");
+        return Result.fail(201, "查询失败");
     }
 
     @GetMapping("/211")
@@ -47,7 +47,7 @@ public class SchoolInfoController {
         if (data != null) {
             return Result.success("211类学校信息查询成功", data);
         }
-        return Result.fail(201, "数据为空");
+        return Result.fail(201, "查询失败");
     }
 
     @GetMapping("/doublehigh")
@@ -56,7 +56,18 @@ public class SchoolInfoController {
         if (data != null) {
             return Result.success("双一流类学校信息查询成功", data);
         }
-        return Result.fail(201, "数据为空");
+        return Result.fail(201, "查询失败");
+    }
+
+    @GetMapping("/province")
+    //样例：http://localhost:8080/schoolInfo/search?page=1&province_name=四川
+    public Result<Map<String, Object>> searchSchools(@RequestParam int page,
+                                                     @RequestParam String province_name) {
+        Map<String, Object> data = schoolInfoService.getByProvince(page, province_name);
+        if (data != null) {
+            return Result.success("查询成功", data);
+        }
+        return Result.fail(201, "查询失败");
     }
 
     @GetMapping("/searchByName")
@@ -67,20 +78,6 @@ public class SchoolInfoController {
             return Result.success("查询成功", data);
         }
         return Result.fail(201, "查询失败");
-    }
-
-    @GetMapping("/search")
-    //样例：http://localhost:8080/schoolInfo/search?page=1&province_name=四川&is985=&is211=&doublehigh=
-    public Result<Map<String, Object>> searchSchools(@RequestParam int page,
-                                                     @RequestParam String province_name,
-                                                     @RequestParam String is985,
-                                                     @RequestParam String is211,
-                                                     @RequestParam String doublehigh) {
-        Map<String, Object> data = schoolInfoService.searchSchools(page, province_name, is985, is211, doublehigh);
-        if (data != null) {
-            return Result.success("学校信息查询成功", data);
-        }
-        return Result.fail(201, "数据为空");
     }
 
 
