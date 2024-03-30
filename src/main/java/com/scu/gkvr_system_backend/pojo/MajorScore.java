@@ -1,18 +1,16 @@
 package com.scu.gkvr_system_backend.pojo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
-import lombok.Data;
 
 /**
  * @TableName major_score
  */
-@TableName(value ="major_score")
+@TableName(value = "major_score")
 @Data
 public class MajorScore implements Serializable {
     @TableId

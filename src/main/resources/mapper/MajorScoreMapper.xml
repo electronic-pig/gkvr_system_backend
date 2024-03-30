@@ -5,20 +5,20 @@
 <mapper namespace="com.scu.gkvr_system_backend.mapper.MajorScoreMapper">
 
     <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.MajorScore">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="schoolId" column="school_id" jdbcType="INTEGER"/>
-            <result property="majorId" column="major_id" jdbcType="INTEGER"/>
-            <result property="majorName" column="major_name" jdbcType="VARCHAR"/>
-            <result property="max" column="max" jdbcType="INTEGER"/>
-            <result property="min" column="min" jdbcType="INTEGER"/>
-            <result property="average" column="average" jdbcType="INTEGER"/>
-            <result property="minSection" column="min_section" jdbcType="INTEGER"/>
-            <result property="provinceId" column="province_id" jdbcType="INTEGER"/>
-            <result property="level" column="level" jdbcType="VARCHAR"/>
-            <result property="level1" column="level1" jdbcType="VARCHAR"/>
-            <result property="level2" column="level2" jdbcType="VARCHAR"/>
-            <result property="level3" column="level3" jdbcType="VARCHAR"/>
-            <result property="batch" column="batch" jdbcType="VARCHAR"/>
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="schoolId" column="school_id" jdbcType="INTEGER"/>
+        <result property="majorId" column="major_id" jdbcType="INTEGER"/>
+        <result property="majorName" column="major_name" jdbcType="VARCHAR"/>
+        <result property="max" column="max" jdbcType="INTEGER"/>
+        <result property="min" column="min" jdbcType="INTEGER"/>
+        <result property="average" column="average" jdbcType="INTEGER"/>
+        <result property="minSection" column="min_section" jdbcType="INTEGER"/>
+        <result property="provinceId" column="province_id" jdbcType="INTEGER"/>
+        <result property="level" column="level" jdbcType="VARCHAR"/>
+        <result property="level1" column="level1" jdbcType="VARCHAR"/>
+        <result property="level2" column="level2" jdbcType="VARCHAR"/>
+        <result property="level3" column="level3" jdbcType="VARCHAR"/>
+        <result property="batch" column="batch" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

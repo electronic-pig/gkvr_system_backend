@@ -5,13 +5,13 @@
 <mapper namespace="com.scu.gkvr_system_backend.mapper.ScoreRankMapper">
 
     <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.ScoreRank">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="score" column="score" jdbcType="VARCHAR"/>
-            <result property="num" column="num" jdbcType="INTEGER"/>
-            <result property="rank" column="rank" jdbcType="INTEGER"/>
-            <result property="rankRange" column="rank_range" jdbcType="VARCHAR"/>
-            <result property="batchName" column="batch_name" jdbcType="VARCHAR"/>
-            <result property="controlScore" column="control_score" jdbcType="INTEGER"/>
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="score" column="score" jdbcType="VARCHAR"/>
+        <result property="num" column="num" jdbcType="INTEGER"/>
+        <result property="rank" column="rank" jdbcType="INTEGER"/>
+        <result property="rankRange" column="rank_range" jdbcType="VARCHAR"/>
+        <result property="batchName" column="batch_name" jdbcType="VARCHAR"/>
+        <result property="controlScore" column="control_score" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">

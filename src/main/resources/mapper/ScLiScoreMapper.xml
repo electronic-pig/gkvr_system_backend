@@ -5,15 +5,15 @@
 <mapper namespace="com.scu.gkvr_system_backend.mapper.ScLiScoreMapper">
 
     <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.ScLiScore">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="schoolId" column="school_id" jdbcType="INTEGER"/>
-            <result property="schoolName" column="school_name" jdbcType="VARCHAR"/>
-            <result property="score2022" column="score2022" jdbcType="INTEGER"/>
-            <result property="rank2022" column="rank2022" jdbcType="INTEGER"/>
-            <result property="score2021" column="score2021" jdbcType="INTEGER"/>
-            <result property="rank2021" column="rank2021" jdbcType="INTEGER"/>
-            <result property="score2020" column="score2020" jdbcType="INTEGER"/>
-            <result property="rank2020" column="rank2020" jdbcType="INTEGER"/>
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="schoolId" column="school_id" jdbcType="INTEGER"/>
+        <result property="schoolName" column="school_name" jdbcType="VARCHAR"/>
+        <result property="score2022" column="score2022" jdbcType="INTEGER"/>
+        <result property="rank2022" column="rank2022" jdbcType="INTEGER"/>
+        <result property="score2021" column="score2021" jdbcType="INTEGER"/>
+        <result property="rank2021" column="rank2021" jdbcType="INTEGER"/>
+        <result property="score2020" column="score2020" jdbcType="INTEGER"/>
+        <result property="rank2020" column="rank2020" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">

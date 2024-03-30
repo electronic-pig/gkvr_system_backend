@@ -5,9 +5,9 @@
 <mapper namespace="com.scu.gkvr_system_backend.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.User">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="username" column="username" jdbcType="VARCHAR"/>
-            <result property="password" column="password" jdbcType="VARCHAR"/>
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

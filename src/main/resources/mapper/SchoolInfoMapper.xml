@@ -5,22 +5,22 @@
 <mapper namespace="com.scu.gkvr_system_backend.mapper.SchoolInfoMapper">
 
     <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.SchoolInfo">
-            <id property="schoolId" column="school_id" jdbcType="INTEGER"/>
-            <result property="schoolName" column="school_name" jdbcType="VARCHAR"/>
-            <result property="central" column="central" jdbcType="INTEGER"/>
-            <result property="belongs" column="belongs" jdbcType="VARCHAR"/>
-            <result property="cityName" column="city_name" jdbcType="VARCHAR"/>
-            <result property="countyName" column="county_name" jdbcType="VARCHAR"/>
-            <result property="doublehigh" column="doublehigh" jdbcType="VARCHAR"/>
-            <result property="is211" column="is211" jdbcType="INTEGER"/>
-            <result property="is985" column="is985" jdbcType="INTEGER"/>
-            <result property="degree" column="degree" jdbcType="VARCHAR"/>
-            <result property="owner" column="owner" jdbcType="VARCHAR"/>
-            <result property="provinceName" column="province_name" jdbcType="VARCHAR"/>
-            <result property="schoolLevel" column="school_level" jdbcType="VARCHAR"/>
-            <result property="schoolType" column="school_type" jdbcType="VARCHAR"/>
-            <result property="monthView" column="month_view" jdbcType="INTEGER"/>
-            <result property="totalView" column="total_view" jdbcType="VARCHAR"/>
+        <id property="schoolId" column="school_id" jdbcType="INTEGER"/>
+        <result property="schoolName" column="school_name" jdbcType="VARCHAR"/>
+        <result property="central" column="central" jdbcType="INTEGER"/>
+        <result property="belongs" column="belongs" jdbcType="VARCHAR"/>
+        <result property="cityName" column="city_name" jdbcType="VARCHAR"/>
+        <result property="countyName" column="county_name" jdbcType="VARCHAR"/>
+        <result property="doublehigh" column="doublehigh" jdbcType="VARCHAR"/>
+        <result property="is211" column="is211" jdbcType="INTEGER"/>
+        <result property="is985" column="is985" jdbcType="INTEGER"/>
+        <result property="degree" column="degree" jdbcType="VARCHAR"/>
+        <result property="owner" column="owner" jdbcType="VARCHAR"/>
+        <result property="provinceName" column="province_name" jdbcType="VARCHAR"/>
+        <result property="schoolLevel" column="school_level" jdbcType="VARCHAR"/>
+        <result property="schoolType" column="school_type" jdbcType="VARCHAR"/>
+        <result property="monthView" column="month_view" jdbcType="INTEGER"/>
+        <result property="totalView" column="total_view" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">

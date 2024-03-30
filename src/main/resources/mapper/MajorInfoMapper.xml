@@ -5,13 +5,13 @@
 <mapper namespace="com.scu.gkvr_system_backend.mapper.MajorInfoMapper">
 
     <resultMap id="BaseResultMap" type="com.scu.gkvr_system_backend.pojo.MajorInfo">
-            <id property="majorId" column="major_id" jdbcType="INTEGER"/>
-            <result property="type" column="type" jdbcType="VARCHAR"/>
-            <result property="majorName" column="major_name" jdbcType="VARCHAR"/>
-            <result property="majorCode" column="major_code" jdbcType="VARCHAR"/>
-            <result property="level" column="level" jdbcType="VARCHAR"/>
-            <result property="years" column="years" jdbcType="VARCHAR"/>
-            <result property="degree" column="degree" jdbcType="VARCHAR"/>
+        <id property="majorId" column="major_id" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="majorName" column="major_name" jdbcType="VARCHAR"/>
+        <result property="majorCode" column="major_code" jdbcType="VARCHAR"/>
+        <result property="level" column="level" jdbcType="VARCHAR"/>
+        <result property="years" column="years" jdbcType="VARCHAR"/>
+        <result property="degree" column="degree" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
