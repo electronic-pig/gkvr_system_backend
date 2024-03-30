@@ -27,6 +27,8 @@ import java.util.Map;
 public class SchoolInfoDetailServiceImpl extends ServiceImpl<SchoolInfoDetailMapper, SchoolInfoDetail>
         implements SchoolInfoDetailService {
 
+    private final Map<String, Object> result = new HashMap<>(); //结果集
+
     @Autowired
     private ScLiScoreMapper scLiScoreMapper;
 
@@ -54,7 +56,6 @@ public class SchoolInfoDetailServiceImpl extends ServiceImpl<SchoolInfoDetailMap
         wrapper4.eq(SchoolInfo::getSchoolId, schoolId);
         SchoolInfo schoolInfo = this.schoolInfoMapper.selectOne(wrapper4);
 
-        Map<String, Object> result = new HashMap<>();
         result.put("schoolInfoDetail", schoolInfoDetail);
         result.put("scLiScore", scLiScore);
         result.put("majorScore", majorScore);

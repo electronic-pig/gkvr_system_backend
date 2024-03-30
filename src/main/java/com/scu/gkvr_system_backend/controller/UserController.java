@@ -26,9 +26,9 @@ public class UserController {
 
     @PostMapping("/login")
     public Result<Map<String, Object>> login(@RequestBody User user) {
-        Map<String, Object> data = userService.login(user);
-        if (data != null) {
-            return Result.success(data);
+        Boolean result = userService.login(user);
+        if (result) {
+            return Result.success("登录成功！");
         }
         return Result.fail("用户名或密码错误");
     }

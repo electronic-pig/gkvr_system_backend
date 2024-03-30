@@ -37,7 +37,7 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
         wrapper.eq(UserVoluntary::getSchoolName, userVoluntary.getSchoolName());
         UserVoluntary userVoluntaryResult = this.baseMapper.selectOne(wrapper);
         int rowsAffected;
-        //已存在学校志愿则更新，否则添加
+        //若存在学校志愿则更新，否则添加
         if (userVoluntaryResult != null) {
             rowsAffected = this.baseMapper.update(userVoluntary, wrapper);
         } else {
