@@ -15,13 +15,13 @@ import java.util.Objects;
 /**
  * @author Liyang
  * @description 针对表【major_info】的数据库操作Service实现
- * @createDate 2024-03-23 16:46:11
+ * @createDate 2024-03-30 09:57:35
  */
 @Service
 public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo>
         implements MajorInfoService {
 
-    private final Map<String, Object> result = new HashMap<>();  // 结果集
+    private final Map<String, Object> result = new HashMap<>();
 
     @Override
     public Map<String, Object> getSortedMajors(int page, String type) {

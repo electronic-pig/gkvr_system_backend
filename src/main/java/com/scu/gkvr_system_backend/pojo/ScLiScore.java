@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
 import java.io.Serializable;
 import lombok.Data;
 
@@ -13,6 +15,7 @@ import lombok.Data;
 @TableName(value ="sc_li_score")
 @Data
 public class ScLiScore implements Serializable {
+    @TableId
     private Integer id;
 
     private Integer schoolId;
@@ -31,5 +34,6 @@ public class ScLiScore implements Serializable {
 
     private Integer rank2020;
 
+    @Serial
     private static final long serialVersionUID = 1L;
 }

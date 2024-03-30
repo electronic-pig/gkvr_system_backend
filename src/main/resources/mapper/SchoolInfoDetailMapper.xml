@@ -12,7 +12,6 @@
             <result property="numDoctor" column="num_doctor" jdbcType="INTEGER"/>
             <result property="numAcademician" column="num_academician" jdbcType="INTEGER"/>
             <result property="createDate" column="create_date" jdbcType="INTEGER"/>
-            <result property="area" column="area" jdbcType="VARCHAR"/>
             <result property="ruankeRank" column="ruanke_rank" jdbcType="INTEGER"/>
             <result property="xyhRank" column="xyh_rank" jdbcType="INTEGER"/>
             <result property="usRank" column="us_rank" jdbcType="INTEGER"/>
@@ -30,10 +29,10 @@
     <sql id="Base_Column_List">
         school_id,school_name,num_subject,
         num_master,num_doctor,num_academician,
-        create_date,area,ruanke_rank,
-        xyh_rank,us_rank,email,
-        phone,school_site,content,
-        job,postgraduate,abroad,
-        men_rate,female_rate
+        create_date,ruanke_rank,xyh_rank,
+        us_rank,email,phone,
+        school_site,content,job,
+        postgraduate,abroad,men_rate,
+        female_rate
     </sql>
 </mapper>

@@ -30,10 +30,6 @@ public class MajorInfo implements Serializable {
 
     private String degree;
 
-    private String avgsalary;
-
-    private String totalView;
-
     @Serial
     private static final long serialVersionUID = 1L;
 }

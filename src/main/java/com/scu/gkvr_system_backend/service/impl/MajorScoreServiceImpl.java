@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author Liyang
 * @description 针对表【major_score】的数据库操作Service实现
-* @createDate 2024-03-23 16:46:11
+* @createDate 2024-03-30 10:13:18
 */
 @Service
 public class MajorScoreServiceImpl extends ServiceImpl<MajorScoreMapper, MajorScore>

@@ -12,13 +12,11 @@
             <result property="level" column="level" jdbcType="VARCHAR"/>
             <result property="years" column="years" jdbcType="VARCHAR"/>
             <result property="degree" column="degree" jdbcType="VARCHAR"/>
-            <result property="avgsalary" column="avgsalary" jdbcType="VARCHAR"/>
-            <result property="totalView" column="total_view" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         major_id,type,major_name,
         major_code,level,years,
-        degree,avgsalary,total_view
+        degree
     </sql>
 </mapper>

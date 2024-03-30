@@ -20,21 +20,21 @@ public class MajorScore implements Serializable {
 
     private Integer schoolId;
 
-    private Integer speId;
+    private Integer majorId;
 
-    private String spname;
+    private String majorName;
 
-    private String max;
+    private Integer max;
 
-    private String min;
+    private Integer min;
 
-    private String average;
+    private Integer average;
 
-    private String minSection;
+    private Integer minSection;
 
-    private String provinceId;
+    private Integer provinceId;
 
-    private String benk;
+    private String level;
 
     private String level1;
 

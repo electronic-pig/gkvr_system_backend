@@ -30,8 +30,6 @@ public class SchoolInfoDetail implements Serializable {
 
     private Integer createDate;
 
-    private String area;
-
     private Integer ruankeRank;
 
     private Integer xyhRank;
