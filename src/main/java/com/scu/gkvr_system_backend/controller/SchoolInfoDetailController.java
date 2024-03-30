@@ -27,8 +27,8 @@ public class SchoolInfoDetailController {
     public Result<Map<String, Object>> getSchoolDetail(@RequestParam int schoolId) {
         Map<String, Object> data = schoolInfoDetailService.getSchoolDetail(schoolId);
         if (data != null) {
-            return Result.success("查询成功", data);
+            return Result.success(data);
         }
-        return Result.fail(201, "数据为空");
+        return Result.fail("查询失败");
     }
 }

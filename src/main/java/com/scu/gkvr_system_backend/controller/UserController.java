@@ -28,17 +28,17 @@ public class UserController {
     public Result<Map<String, Object>> login(@RequestBody User user) {
         Map<String, Object> data = userService.login(user);
         if (data != null) {
-            return Result.success("登录成功", data);
+            return Result.success(data);
         }
-        return Result.fail(201, "用户名或密码错误");
+        return Result.fail("用户名或密码错误");
     }
 
     @PostMapping("/register")
     public Result<Map<String, Object>> register(@RequestBody User user) {
         Boolean result = userService.register(user);
         if (result) {
-            return Result.success("注册成功");
+            return Result.success("注册成功！");
         }
-        return Result.fail(201, "用户已存在");
+        return Result.fail("用户已存在");
     }
 }

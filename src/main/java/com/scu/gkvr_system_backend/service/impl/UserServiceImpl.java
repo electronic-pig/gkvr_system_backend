@@ -41,7 +41,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         if (registerUser != null) {
             return false;
         } else {
-            user.setId(null);//主键自增长
             int rowsAffected = this.baseMapper.insert(user);
             return rowsAffected > 0;
         }

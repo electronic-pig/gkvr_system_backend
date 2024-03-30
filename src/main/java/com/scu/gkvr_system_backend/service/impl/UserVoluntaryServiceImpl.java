@@ -19,14 +19,15 @@ import java.util.Map;
 @Service
 public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, UserVoluntary>
         implements UserVoluntaryService {
+    private final Map<String, Object> result = new HashMap<>(); //结果集
+
     @Override
-    public Map<String, Object> getVoluntary(String user_name) {
+    public Map<String, Object> getVoluntary(String username) {
         LambdaQueryWrapper<UserVoluntary> wrapper = new LambdaQueryWrapper<>();
-        wrapper.eq(UserVoluntary::getUserName, user_name);
-        List<UserVoluntary> userVoluntaryList = baseMapper.selectList(wrapper);
-        Map<String, Object> data = new HashMap<>();
-        data.put("userVoluntary", userVoluntaryList);
-        return data;
+        wrapper.eq(UserVoluntary::getUserName, username);
+        List<UserVoluntary> userVoluntaryList = this.baseMapper.selectList(wrapper);
+        result.put("userVoluntary", userVoluntaryList);
+        return result;
     }
 
     @Override
@@ -35,13 +36,14 @@ public class UserVoluntaryServiceImpl extends ServiceImpl<UserVoluntaryMapper, U
         wrapper.eq(UserVoluntary::getUserName, userVoluntary.getUserName());
         wrapper.eq(UserVoluntary::getSchoolName, userVoluntary.getSchoolName());
         UserVoluntary userVoluntaryResult = this.baseMapper.selectOne(wrapper);
+        int rowsAffected;
+        //已存在学校志愿则更新，否则添加
         if (userVoluntaryResult != null) {
-            int rowsAffected = this.baseMapper.update(userVoluntary, wrapper);
-            return rowsAffected > 0;
+            rowsAffected = this.baseMapper.update(userVoluntary, wrapper);
         } else {
-            int rowsAffected = this.baseMapper.insert(userVoluntary);
-            return rowsAffected > 0;
+            rowsAffected = this.baseMapper.insert(userVoluntary);
         }
+        return rowsAffected > 0;
     }
 
     @Override

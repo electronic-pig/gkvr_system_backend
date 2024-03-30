@@ -12,14 +12,11 @@ spring:
 
     # Druid的其他属性配置 springboot3整合情况下,数据库连接信息必须在Druid属性下!
     druid:
-      url: jdbc:mysql://sqlserver.mysql.database.azure.com:3306/gkvr_system
-      username: sqlserver
-      password: LY280018ly!!!
+      url: jdbc:mysql://localhost/gkvr_system
+      username: root
+      password: 123456
       driver-class-name: com.mysql.cj.jdbc.Driver
 
 # mybatis-plus的配置
 mybatis-plus:
-  type-aliases-package: com.gkvr_system.pojo
-  global-config:
-    db-config:
-      logic-delete-field: isDeleted  #全局逻辑删除
+  type-aliases-package: com.scu.gkvr_system_backend.pojo

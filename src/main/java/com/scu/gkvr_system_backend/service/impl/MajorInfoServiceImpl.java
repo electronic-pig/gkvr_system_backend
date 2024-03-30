@@ -21,14 +21,14 @@ import java.util.Objects;
 public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo>
         implements MajorInfoService {
 
-    private final Map<String, Object> result = new HashMap<>();
+    private final Map<String, Object> result = new HashMap<>(); //结果集
 
     @Override
     public Map<String, Object> getSortedMajors(int page, String type) {
         LambdaQueryWrapper<MajorInfo> wrapper = new LambdaQueryWrapper<>();
-        if (!Objects.equals(type, "全部"))
+        if (!type.equals("全部"))
             wrapper.eq(MajorInfo::getType, type);
-        Page<MajorInfo> majorInfoPage = baseMapper.selectPage(new Page<>(page, 10), wrapper);
+        Page<MajorInfo> majorInfoPage = this.baseMapper.selectPage(new Page<>(page, 10), wrapper);
         result.put("majors", majorInfoPage.getRecords());
         result.put("total", majorInfoPage.getTotal());
         return result;
@@ -38,7 +38,7 @@ public class MajorInfoServiceImpl extends ServiceImpl<MajorInfoMapper, MajorInfo
     public Map<String, Object> SearchByName(int page, String majorName) {
         LambdaQueryWrapper<MajorInfo> wrapper = new LambdaQueryWrapper<>();
         wrapper.like(MajorInfo::getMajorName, majorName);
-        Page<MajorInfo> majorInfoPage = baseMapper.selectPage(new Page<>(page, 10), wrapper);
+        Page<MajorInfo> majorInfoPage = this.baseMapper.selectPage(new Page<>(page, 10), wrapper);
         result.put("majors", majorInfoPage.getRecords());
         result.put("total", majorInfoPage.getTotal());
         return result;

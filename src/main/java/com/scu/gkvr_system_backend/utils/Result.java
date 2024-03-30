@@ -1,6 +1,8 @@
 package com.scu.gkvr_system_backend.utils;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 全局统一返回结果类

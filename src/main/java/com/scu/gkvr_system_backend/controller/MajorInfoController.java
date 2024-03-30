@@ -24,21 +24,22 @@ public class MajorInfoController {
     private MajorInfoService majorInfoService;
 
     @GetMapping("/getSortedMajors")
-    public Result<Map<String, Object>> getSortedMajors(@RequestParam int page, @RequestParam String type) {
+    public Result<Map<String, Object>> getSortedMajors(@RequestParam int page,
+                                                       @RequestParam String type) {
         Map<String, Object> data = majorInfoService.getSortedMajors(page, type);
         if (data != null) {
-            return Result.success("专业信息查询成功", data);
+            return Result.success(data);
         }
-        return Result.fail(201, "数据为空");
+        return Result.fail("查询失败");
     }
 
     @GetMapping("/searchByName")
-    //样例：http://localhost:8080/majorInfo/searchByName?majorName=医
-    public Result<Map<String, Object>> majorSearchByName(@RequestParam int page, @RequestParam String majorName) {
+    public Result<Map<String, Object>> majorSearchByName(@RequestParam int page,
+                                                         @RequestParam String majorName) {
         Map<String, Object> data = majorInfoService.SearchByName(page, majorName);
         if (data != null) {
-            return Result.success("查询成功", data);
+            return Result.success(data);
         }
-        return Result.fail(201, "查询失败");
+        return Result.fail("查询失败");
     }
 }

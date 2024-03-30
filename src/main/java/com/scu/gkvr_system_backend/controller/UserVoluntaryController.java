@@ -25,12 +25,12 @@ public class UserVoluntaryController {
     private UserVoluntaryService userVoluntaryService;
 
     @GetMapping("/getVoluntary")
-    public Result<Map<String, Object>> getVoluntary(@RequestParam String user_name) {
-        Map<String, Object> data = userVoluntaryService.getVoluntary(user_name);
+    public Result<Map<String, Object>> getVoluntary(@RequestParam String username) {
+        Map<String, Object> data = userVoluntaryService.getVoluntary(username);
         if (data != null) {
-            return Result.success("获取成功", data);
+            return Result.success(data);
         }
-        return Result.fail(201, "获取失败");
+        return Result.fail("查询失败");
     }
 
     @PostMapping("/addVoluntary")
@@ -39,7 +39,7 @@ public class UserVoluntaryController {
         if (result) {
             return Result.success("添加成功");
         }
-        return Result.fail(201, "添加失败");
+        return Result.fail("添加失败");
     }
 
     @PostMapping("/deleteVoluntary")
@@ -48,7 +48,7 @@ public class UserVoluntaryController {
         if (result) {
             return Result.success("删除成功");
         }
-        return Result.fail(201, "删除失败");
+        return Result.fail("删除失败");
     }
 
 }
