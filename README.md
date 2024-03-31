@@ -25,15 +25,16 @@
 
 ## 🛠 后端技术栈
 
-| [Spring Boot 3.2.3](https://springdoc.cn/spring-boot/) | [MyBatis-Plus 3.5.5](https://baomidou.com/) | [MySQL 5.7](https://dev.mysql.com/downloads/windows/installer/5.7.html) |
+| [Spring Boot 3.2.3](https://springdoc.cn/spring-boot/) | [MyBatis-Plus 3.5.5](https://baomidou.com/) | [MySQL 5.7.44](https://dev.mysql.com/downloads/windows/installer/5.7.html) |
 |:---:|:--:|:--:|
-| [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/dda83365-cda4-4ae9-bd10-9c379e267e7a" alt="springboot" height="100px"/>](https://springdoc.cn/spring-boot/) | [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/a45933bd-549f-4636-88bf-0d79babe41d3" alt="mybatisPlus" height="100px"/>]((https://baomidou.com/)) | [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/5fa43d20-c089-480c-a9af-f67b12e16ed1" alt="mysql5.7" height="100px"/>](https://dev.mysql.com/downloads/windows/installer/5.7.html) |
+| [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/dda83365-cda4-4ae9-bd10-9c379e267e7a" alt="springboot" height="100px"/>](https://springdoc.cn/spring-boot/) | [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/a45933bd-549f-4636-88bf-0d79babe41d3" alt="mybatisPlus" height="100px"/>](https://baomidou.com/) | [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/5fa43d20-c089-480c-a9af-f67b12e16ed1" alt="mysql5.7" height="100px"/>](https://dev.mysql.com/downloads/windows/installer/5.7.html) |
 
 ## 📚 关于数据库(新版)
 
-本项目使用`MySQL 5.7`作为数据库，数据库文件并未存放在本项目中，您可以通过提交issue的方式获取数据库文件
+本项目使用`MySQL 5.7.44`作为数据库，数据库文件并未存放在本项目中，您可以通过提交issue的方式获取数据库文件
 
 ## 🚀 项目运行说明
+
 > [!Warning]
 > 本项目的数据信息爬取自[掌上高考](https://www.gaokao.cn/)，项目成员对数据真实性不做任何保证，一切以学校官网为准
 
@@ -41,7 +42,7 @@
 
 - jdk ≥ 17
 - maven ≥ 3
-- mysql = 5.7
+- mysql = 5.7.44
 
 然后执行以下步骤
 
