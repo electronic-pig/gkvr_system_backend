@@ -8,6 +8,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/electronic-pig/gkvr_system_backend)
 
 ## 🔥 最新动态 [2024/3/31] 
+
 - 完成了对后端代码的重构，优化了数据库，更新了部分接口
 - 新版本v2.0.0已发布，旧版本代码请查看tag v1.0.0
 
@@ -24,10 +25,9 @@
 
 ## 🛠 后端技术栈
 
-|                                                                 [Spring Boot 3.2.3](https://springdoc.cn/spring-boot/)                                                                 |                                                                [MyBatis-Plus 3.5.5](https://baomidou.com/)                                                                |                                                                     [MySQL 5.7](https://dev.mysql.com/downloads/windows/installer/5.7.html)                                                                      |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-| [<img src="https://github.com/Labhahaha/Yelp-Analysis-and-Reco/assets/95296826/3cd27a4b-7268-401a-afc9-ea9a118caa31" alt="flask" height="100px"/>](https://flask.palletsprojects.com/) | [<img src="https://github.com/Labhahaha/Yelp-Analysis-and-Reco/assets/95296826/56c66fc1-0491-4eae-bad5-4c08115c4776" alt="pytorch" height="100px"/>](https://pytorch.org) | [<img src="https://github.com/Labhahaha/Yelp-Analysis-and-Reco/assets/95296826/18254205-d00a-4f99-aa85-5e3d1dfbf1ab" alt="scikit-learn" height="80px"/>](https://scikit-learn.org/stable/index.html) |
-
+| [Spring Boot 3.2.3](https://springdoc.cn/spring-boot/) | [MyBatis-Plus 3.5.5](https://baomidou.com/) | [MySQL 5.7](https://dev.mysql.com/downloads/windows/installer/5.7.html) |
+|:---:|:--:|:--:|
+| [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/dda83365-cda4-4ae9-bd10-9c379e267e7a" alt="springboot" height="100px"/>](https://springdoc.cn/spring-boot/) | [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/a45933bd-549f-4636-88bf-0d79babe41d3" alt="mybatisPlus" height="100px"/>]((https://baomidou.com/)) | [<img src="https://github.com/electronic-pig/gkvr_system_backend/assets/103497254/5fa43d20-c089-480c-a9af-f67b12e16ed1" alt="mysql5.7" height="100px"/>](https://dev.mysql.com/downloads/windows/installer/5.7.html) |
 
 ## 📚 关于数据库(新版)
 
@@ -45,15 +45,14 @@
 
 然后执行以下步骤
 
-* 在`pom.xml`刷新maven，加载项目依赖
-* 在`src/main/resources/application.yml`中配置数据库连接信息
-* 运行`GkvrSystemApplication.java`启动项目
-
+1. 在`pom.xml`刷新maven，加载项目依赖
+2. 在`src/main/resources/application.yml`中配置数据库连接信息
+3. 运行`GkvrSystemApplication.java`启动项目
 
 ## 🧰 关于算法
 
 > [!Important]
-> 本项目仅使用了简单计算公式来为用户推荐志愿和计算录取概率，推荐结果仅供参考
+> 本项目仅使用了**简单计算公式**来为用户推荐志愿和计算录取概率，推荐结果仅供参考
 > 
 > 项目的算法部分不是本项目的重点，建议开发者自行设计更加合理的算法模型
 
@@ -61,5 +60,6 @@
 本项目由以下三位开发者共同完成(排名不分先后)：[electronic-pig](https://github.com/electronic-pig)、[zf666fz](https://github.com/zf666fz)、[weeadd](https://github.com/weeadd)
 
 v2.0.0版本的更新与维护由仓库所有者[electronic-pig](https://github.com/electronic-pig)完成
+
 ## 📄 写在最后
 项目制作不易，如果它对你有帮助的话，请务必给作者点一个免费的⭐，万分感谢!🙏🙏🙏
