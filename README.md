@@ -4,7 +4,7 @@
 ![GitHub Release](https://img.shields.io/github/v/release/electronic-pig/gkvr_system_backend)
 ![Static Badge](https://img.shields.io/badge/collaborator-3-lightblue)
 ![jdk version](https://img.shields.io/badge/jdk-17+-orange.svg)
-[![issues](https://img.shields.io/github/issues/electronic-pig/gkvr_system_backend?color=9cc)](https://github.com/electronic-pig/gkvr_system_backend/issues)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-closed/electronic-pig/gkvr_system_backend)
 ![GitHub Repo stars](https://img.shields.io/github/stars/electronic-pig/gkvr_system_backend)
 
 ## 🔥 最新动态 [2024/3/31] 
