@@ -40,9 +40,26 @@ public class ScoreRankServiceImpl extends ServiceImpl<ScoreRankMapper, ScoreRank
 
     @Override
     public Map<String, Object> getReco(int page, int score, String risk) {
+
+        // 设置分数范围
+        int minScore = 100;  // 分数下限
+        int maxScore = 750;  // 分数上限
+
+        // 检查分数是否在有效范围内
+        if (score < minScore || score > maxScore) {
+            result.put("error", "分数不在有效范围内，请输入有效的分数。");
+            return result;
+        }
+
         LambdaQueryWrapper<ScoreRank> wrapper = new LambdaQueryWrapper<>();
         wrapper.eq(ScoreRank::getScore, score);
         ScoreRank scoreRank = this.baseMapper.selectOne(wrapper);
+
+        if (scoreRank == null) {
+            result.put("error", "未找到对应的分数排名信息。");
+            return result;
+        }
+
         Integer rank = scoreRank.getRank();//排名
         int UpperRank = (int) (rank * 0.6);
         int LowerRank = (int) (rank * 1.8);
