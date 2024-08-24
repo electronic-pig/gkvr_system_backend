@@ -11,9 +11,9 @@
 
 一个前后端分离的高考志愿推荐系统(gaokao volunteer recommendation system)
 
-若您对项目前端感兴趣，请前往[前端仓库](https://github.com/electronic-pig/gkvr_system_frontend).
+若您对项目前端感兴趣，请前往[前端仓库](https://github.com/electronic-pig/gkvr_system_frontend)
 
-在线体验地址：[高考志愿推荐系统](http://lyserver.eastasia.cloudapp.azure.com/) (用户名：admin 密码：123456)
+在线体验地址：[高考志愿推荐系统](http://electronic-pig.eastasia.cloudapp.azure.com/) (用户名：admin 密码：123456)
 
 > [!NOTE]
 > 本项目部署在小型云服务器上，服务器承载能力有限，可能会出现网址访问失败的情况
