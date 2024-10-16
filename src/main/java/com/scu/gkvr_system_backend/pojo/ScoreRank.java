@@ -1,5 +1,6 @@
 package com.scu.gkvr_system_backend.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -20,8 +21,10 @@ public class ScoreRank implements Serializable {
 
     private Integer num;
 
+    @TableField("`rank`")
     private Integer rank;
 
+    @TableField("`rank_range`")
     private String rankRange;
 
     private String batchName;
