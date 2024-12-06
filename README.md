@@ -13,16 +13,6 @@
 
 若您对项目前端感兴趣，请前往[前端仓库](https://github.com/electronic-pig/gkvr_system_frontend)
 
-点击右上角项目网址进行体验!🥰
-
-```bash
-用户名: admin
-密码: 123456
-```
-
-> [!NOTE]
-> 本项目部署在小型云服务器上，服务器承载能力有限，可能会出现网址访问失败的情况
-
 ## 🛠 技术栈
 
 | [Spring Boot 3.2.3](https://springdoc.cn/spring-boot/) | [MyBatis-Plus 3.5.5](https://baomidou.com/) | [MySQL 5.7.44](https://dev.mysql.com/downloads/windows/installer/5.7.html) |
